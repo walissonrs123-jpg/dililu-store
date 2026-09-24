@@ -4,6 +4,9 @@ import { categories } from "@/lib/catalog";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/product-card";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (

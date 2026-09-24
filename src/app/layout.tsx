@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { store } from "@/lib/store";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(store.url),
   title: "Dililu | Moda bebê e infantil",
   description: "Moda bebê e infantil em Uberlândia/MG. Fale com a Dililu pelo WhatsApp.",
+  openGraph: { type: "website", locale: "pt_BR", siteName: "Dililu", title: "Dililu | Moda bebê e infantil", description: "Conheça as peças e consulte tamanhos e disponibilidade pelo WhatsApp." },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

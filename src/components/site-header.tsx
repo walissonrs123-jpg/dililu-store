@@ -11,8 +11,8 @@ export function SiteHeader() {
         <Link href="/" className="py-2 hover:text-brand">Início</Link>
         <Link href="/catalogo" className="py-2 hover:text-brand">Catálogo</Link>
         <Link href="/carrinho" className="py-2 hover:text-brand">Carrinho</Link>
-        <Link href="/#como-comprar" className="py-2 hover:text-brand">Como comprar</Link>
-        <Link href="/#atendimento" className="py-2 hover:text-brand">Atendimento</Link>
+        <Link href="/como-comprar" className="py-2 hover:text-brand">Como comprar</Link>
+        <Link href="/contato" className="py-2 hover:text-brand">Atendimento</Link>
       </nav>
       <ActionLink href={store.whatsapp} variant="secondary">Fale com a gente</ActionLink>
     </Container>

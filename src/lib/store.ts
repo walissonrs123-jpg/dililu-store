@@ -1,5 +1,6 @@
 export const store = {
   name: "Dililu",
+  url: "https://dililu.sofbrasil.com.br",
   location: "Uberlândia/MG",
   whatsapp: "https://wa.me/5534996419677",
   whatsappLabel: "(34) 99641-9677",

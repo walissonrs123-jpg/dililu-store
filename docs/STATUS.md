@@ -1,6 +1,6 @@
 ﻿# STATUS — Dililu Store V1.1
 - Projeto: Catálogo + WhatsApp + Planejamento Instagram gratuito
-- Marco atual: M6
+- Marco atual: M7
 - Estado: IN_PROGRESS
 
 ## Marcos
@@ -10,13 +10,13 @@
 - [x] M3 Home
 - [x] M4 Produto
 - [x] M5 Carrinho + WhatsApp
-- [ ] M6 Institucional + SEO
+- [x] M6 Institucional + SEO
 - [ ] M7 Planejamento Instagram
 - [ ] M8 Infra AWS
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M6: institucional e SEO. M5 validado: lint/tipos/testes 10/10/build PASS; persistência localStorage, quantidades, remoção, subtotais em centavos e WhatsApp.
+M7: planner interno e exports Markdown/CSV. M6 validado: lint/tipos/testes 10/10/build PASS; páginas institucionais, metadados, sitemap, robots e OpenGraph estático.
 
 ## Último marco concluído
 - M2: modelo Product, cinco peças, catálogo com busca sem acentos, filtros combinados, ordenação e estado vazio. Fotos ausentes indicadas por texto; disponibilidade consultada no atendimento.
@@ -39,6 +39,7 @@ M6: institucional e SEO. M5 validado: lint/tipos/testes 10/10/build PASS; persis
 ## Bloqueios
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial e fotos reais ainda não foram fornecidas. As pastas `public/brand/` e `public/products/` estão preparadas; não substituir os materiais oficiais por imagens inventadas.
+
 
 
 
