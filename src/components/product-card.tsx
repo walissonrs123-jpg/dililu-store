@@ -13,7 +13,8 @@ export function ProductCard({ product }: { product: Product }) {
       <p className="text-sm text-muted">{product.shortDescription}</p>
       <p className="text-xl font-semibold">{formatPrice(product.price)}</p>
       <p className="text-xs text-muted">{product.sizes.length ? `Tamanhos de referência: ${product.sizes.join(", ")}.` : "Tamanhos a consultar."} Disponibilidade sob consulta.</p>
-      <ActionLink className="mt-auto w-full" variant="secondary" href={`${store.whatsapp}?text=${encodeURIComponent(message)}`}>Consultar peça</ActionLink>
+      <ActionLink className="mt-auto w-full" variant="secondary" href={`/produtos/${product.slug}`}>Ver detalhes</ActionLink>
+      <a className="py-2 text-center text-sm text-brand underline underline-offset-4" href={`${store.whatsapp}?text=${encodeURIComponent(message)}`}>Consultar pelo WhatsApp</a>
     </div>
   </article>;
 }
