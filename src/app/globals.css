@@ -1,14 +1,50 @@
 @import "tailwindcss" source(none);
-@source "./";
+@source "../";
+
+@theme {
+  --color-paper: #fffdf9;
+  --color-ink: #30283a;
+  --color-muted: #655b70;
+  --color-brand: #694180;
+  --color-brand-dark: #503060;
+  --color-lilac: #eee4f4;
+  --color-mint: #e8f0e8;
+  --color-peach: #fae8db;
+  --color-line: #ded6e2;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --radius-card: 1.5rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: #fafaf9;
-  color: #292524;
+  background: var(--color-paper);
+  color: var(--color-ink);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
 }
 
 :focus-visible {
-  outline: 3px solid #92400e;
+  outline: 3px solid var(--color-brand);
   outline-offset: 4px;
+}
+
+::selection { background: var(--color-lilac); color: var(--color-ink); }
+
+button, input, select, textarea { font: inherit; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), select { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+input, select, textarea { max-width: 100%; }
+
+.skip-link { position: fixed; z-index: 50; top: .5rem; left: .5rem; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
 }
