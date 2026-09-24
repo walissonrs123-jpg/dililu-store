@@ -9,6 +9,7 @@ export function SiteHeader() {
       <Link href="/" aria-label="Dililu — início" className="font-display text-4xl leading-none tracking-tight text-brand">Dililu<span aria-hidden="true" className="text-ink">.</span></Link>
       <nav aria-label="Navegação principal" className="order-3 flex w-full flex-wrap gap-x-6 gap-y-1 text-sm font-semibold sm:order-none sm:w-auto">
         <Link href="/" className="py-2 hover:text-brand">Início</Link>
+        <Link href="/catalogo" className="py-2 hover:text-brand">Catálogo</Link>
         <Link href="/#como-comprar" className="py-2 hover:text-brand">Como comprar</Link>
         <Link href="/#atendimento" className="py-2 hover:text-brand">Atendimento</Link>
       </nav>
