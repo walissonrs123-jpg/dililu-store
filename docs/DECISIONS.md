@@ -17,3 +17,4 @@
 - D016: M0 usa Node 24 LTS e Git locais em `.tools/`, export Next.js estático e build com dois workers para reduzir carga na máquina. Dependências fixadas no package-lock; validações agrupadas em `npm run verify`.
 - D017: M1 adota tokens provisórios lilás/menta e fontes do sistema, com nome Dililu em texto até receber a logo oficial. Nenhuma imagem de marca ou produto inventada; ativos reais continuam pendentes para apresentação final.
 - D018: M2 usa preços/atributos da especificação e tamanhos do sample apenas como referência, sem afirmar estoque. Vestido sem grade informada fica com tamanhos a consultar. Sem selos de novidade; fotos faltantes recebem aviso textual, sem imagens substitutas.
+- D019: Carrinho persiste apenas IDs/variações/quantidades; preços são relidos do catálogo e somados em centavos. Armazenamento indisponível usa memória da aba com aviso. Planner local exporta Markdown/CSV sem API Meta; CI não publica nem acessa AWS.
