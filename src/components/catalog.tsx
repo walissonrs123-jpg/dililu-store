@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { products } from "@/data/products";
 import { audiences, categories, filterProducts, initialFilters, referenceSizes, type CatalogFilters } from "@/lib/catalog";
 import { Button, Input, Panel, Select } from "@/components/ui";
 import { ProductCard } from "@/components/product-card";
 
 export function Catalog() {
-  const [filters, setFilters] = useState<CatalogFilters>(initialFilters);
+  const params = useSearchParams();
+  const category = params.get("categoria") ?? "";
+  const [filters, setFilters] = useState<CatalogFilters>(() => ({ ...initialFilters, category: categories.some((item) => item.id === category) ? category : "" }));
   const matches = filterProducts(products, filters);
   function update<K extends keyof CatalogFilters>(key: K, value: CatalogFilters[K]) {
     setFilters((previous) => ({ ...previous, [key]: value }));
