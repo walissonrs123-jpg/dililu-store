@@ -1,0 +1,17 @@
+{
+  "story": {
+    "caption": "{{name}} na Dililu. {{description}} Preço: {{price}}. Consulte tamanhos, estampas e disponibilidade.",
+    "mediaSuggestion": "Foto real da peça sozinha em fundo Dililu. Não simular estampas ou atributos.",
+    "callToAction": "Fale com a Dililu pelo WhatsApp: (34) 99641-9677."
+  },
+  "feed": {
+    "caption": "Conheça {{name}}. {{description}} Preço: {{price}}. Atendimento em Uberlândia/MG. Consulte entrega ou retirada.",
+    "mediaSuggestion": "Priorizar foto autorizada de criança usando a peça real. Revisar correspondência com o produto.",
+    "callToAction": "Consulte tamanhos e disponibilidade pelo WhatsApp. @dililu.moda"
+  },
+  "reel": {
+    "caption": "Veja os detalhes de {{name}}. {{description}} Preço: {{price}}. Consulte as opções com a Dililu.",
+    "mediaSuggestion": "Vídeo real da peça: visão geral, tecido e detalhes confirmados. Sem inventar benefícios ou estoque.",
+    "callToAction": "Converse com a gente pelo WhatsApp: (34) 99641-9677."
+  }
+}

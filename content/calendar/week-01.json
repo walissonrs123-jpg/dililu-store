@@ -1,0 +1,9 @@
+[
+  { "id": "w1-seg-body", "date": "2026-09-28", "time": "09:00", "format": "story", "productId": "body-mbaby", "title": "Body M Baby", "status": "planned", "notes": "Selecionar foto real antes de marcar ready." },
+  { "id": "w1-ter-short", "date": "2026-09-29", "time": "19:00", "format": "feed", "productId": "short-mbaby", "title": "Short M Baby", "status": "planned" },
+  { "id": "w1-qua-vestido", "date": "2026-09-30", "time": "09:00", "format": "story", "productId": "vestido-infantil", "title": "Vestido infantil", "status": "planned" },
+  { "id": "w1-qui-jennynha", "date": "2026-10-01", "time": "19:00", "format": "feed", "productId": "conjunto-jennynha-feminino", "title": "Jennynha com cinto e bolsinha", "status": "planned" },
+  { "id": "w1-sex-jennynha", "date": "2026-10-02", "time": "09:00", "format": "story", "productId": "conjunto-jennynha-masculino", "title": "Conjunto Jennynha masculino", "status": "planned" },
+  { "id": "w1-sab-detalhes", "date": "2026-10-03", "time": "10:00", "format": "reel", "productId": "body-mbaby", "title": "Detalhes do tecido", "status": "planned" },
+  { "id": "w1-dom-conversa", "date": "2026-10-04", "time": "10:00", "format": "story", "title": "Converse com a Dililu", "caption": "Qual peça você quer conhecer melhor? Fale com a Dililu pelo WhatsApp.", "mediaSuggestion": "Fundo simples com pergunta; aplicar logo oficial quando disponível.", "callToAction": "WhatsApp: (34) 99641-9677", "status": "planned" }
+]

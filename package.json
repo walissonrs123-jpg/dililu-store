@@ -2,6 +2,7 @@
   "name": "dililu-store",
   "version": "1.1.0",
   "private": true,
+  "type": "module",
   "engines": { "node": ">=24 <25" },
   "scripts": {
     "dev": "next dev",
@@ -9,6 +10,7 @@
     "lint": "eslint src tests next.config.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
+    "content:plan": "node scripts/generate-content-plan.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
