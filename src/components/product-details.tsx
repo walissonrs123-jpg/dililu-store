@@ -5,11 +5,14 @@ import { useState } from "react";
 import { ActionLink, Button, Select } from "@/components/ui";
 import { formatPrice, type Product } from "@/lib/catalog";
 import { store } from "@/lib/store";
+import { useCart } from "@/components/use-cart";
 
 export function ProductDetails({ product }: { product: Product }) {
   const [image, setImage] = useState(0);
   const [size, setSize] = useState("");
   const [print, setPrint] = useState("");
+  const [notice, setNotice] = useState("");
+  const { add } = useCart();
   const message = `Olá, Dililu! Tenho interesse em ${product.name}. Tamanho: ${size || "a consultar"}. Estampa: ${print || "a consultar"}. Preço: ${formatPrice(product.price)}. Pode confirmar a disponibilidade e as opções de entrega ou retirada?`;
   return <div className="mt-8 grid gap-10 lg:grid-cols-2">
     <div>
@@ -25,6 +28,9 @@ export function ProductDetails({ product }: { product: Product }) {
       <div><label htmlFor="produto-estampa" className="mb-2 block text-sm font-semibold">Estampa desejada</label><Select id="produto-estampa" value={print} onChange={(event) => setPrint(event.target.value)}><option value="">Consultar estampas</option>{(product.prints ?? []).map((value) => <option key={value} value={value}>{value}</option>)}</Select></div>
       <p className="text-sm text-muted">Tamanhos de referência. Confirme disponibilidade, estampas e entrega ou retirada antes de concluir a compra. Pagamento via Pix.</p>
       <ActionLink href={`${store.whatsapp}?text=${encodeURIComponent(message)}`} className="w-full">Consultar pelo WhatsApp</ActionLink>
+      <Button className="w-full" variant="secondary" disabled={product.stockMode === "unavailable"} onClick={() => { const persisted = add({ productId: product.id, size: size || "A consultar", print: print || "A consultar", quantity: 1 }); setNotice(persisted ? "Peça adicionada ao carrinho." : "Peça adicionada nesta aba. Seu navegador não permitiu salvar o carrinho para a próxima visita."); }}>Adicionar ao carrinho</Button>
+      <p role="status" className="text-sm text-muted">{notice}</p>
+      {notice && <ActionLink href="/carrinho" variant="secondary">Ver carrinho</ActionLink>}
     </div>
   </div>;
 }
