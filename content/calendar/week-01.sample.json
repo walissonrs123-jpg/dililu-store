@@ -1,0 +1,41 @@
+[
+  {
+    "id": "w1-seg-body",
+    "date": "2026-09-28",
+    "time": "09:00",
+    "format": "story",
+    "productId": "body-mbaby",
+    "title": "Bodies M Baby",
+    "caption": "Novidades M Baby na Dililu 💕",
+    "mediaSuggestion": "Body em cabide, fundo Dililu",
+    "callToAction": "Consulte tamanhos pelo WhatsApp",
+    "status": "planned",
+    "notes": "Destacar tecido toque de pêssego."
+  },
+  {
+    "id": "w1-ter-look",
+    "date": "2026-09-29",
+    "time": "19:00",
+    "format": "feed",
+    "productId": "body-mbaby",
+    "title": "Look M Baby",
+    "caption": "Looks fofos para acompanhar cada descoberta 💕💙",
+    "mediaSuggestion": "Criança usando body + short",
+    "callToAction": "Pedidos pelo WhatsApp",
+    "status": "planned",
+    "notes": ""
+  },
+  {
+    "id": "w1-qui-jennynha",
+    "date": "2026-10-01",
+    "time": "19:00",
+    "format": "feed",
+    "productId": "conjunto-jennynha-feminino",
+    "title": "Conjuntos Jennynha",
+    "caption": "Novidades para eles e para elas 💙💕",
+    "mediaSuggestion": "Crianças usando conjuntos masculino e feminino",
+    "callToAction": "Consulte tamanhos e disponibilidade",
+    "status": "planned",
+    "notes": "Feminino inclui cinto + bolsinha."
+  }
+]

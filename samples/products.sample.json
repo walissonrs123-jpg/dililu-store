@@ -1,0 +1,111 @@
+[
+  {
+    "id": "body-mbaby",
+    "slug": "body-mbaby",
+    "name": "Body M Baby",
+    "shortDescription": "Body infantil M Baby com tecido toque de pêssego.",
+    "brand": "M Baby",
+    "material": "Toque de pêssego",
+    "category": "bodies",
+    "audience": "bebe",
+    "price": 34.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "prints": [
+      "Várias estampas"
+    ],
+    "images": [
+      "/products/body-mbaby-01.jpg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true,
+    "stockMode": "consult"
+  },
+  {
+    "id": "short-mbaby",
+    "slug": "short-mbaby",
+    "name": "Short M Baby",
+    "shortDescription": "Short infantil M Baby com várias estampas e tamanhos.",
+    "brand": "M Baby",
+    "category": "shorts",
+    "audience": "bebe",
+    "price": 19.9,
+    "sizes": [
+      "P",
+      "M",
+      "G",
+      "GG"
+    ],
+    "prints": [
+      "Várias estampas"
+    ],
+    "images": [
+      "/products/short-mbaby-01.jpg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true,
+    "stockMode": "consult"
+  },
+  {
+    "id": "conjunto-jennynha-masculino",
+    "slug": "conjunto-jennynha-masculino",
+    "name": "Conjunto Jennynha Masculino",
+    "shortDescription": "Conjunto infantil masculino 100% algodão.",
+    "brand": "Jennynha",
+    "material": "100% algodão",
+    "category": "conjuntos-masculinos",
+    "audience": "menino",
+    "price": 54.9,
+    "sizes": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "prints": [
+      "Consulte opções"
+    ],
+    "images": [
+      "/products/jennynha-masc-01.jpg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true,
+    "stockMode": "consult"
+  },
+  {
+    "id": "conjunto-jennynha-feminino",
+    "slug": "conjunto-jennynha-feminino",
+    "name": "Conjunto Jennynha Feminino",
+    "shortDescription": "Conjunto feminino 100% algodão com cinto e bolsinha inclusos.",
+    "brand": "Jennynha",
+    "material": "100% algodão",
+    "category": "conjuntos-femininos",
+    "audience": "menina",
+    "price": 64.9,
+    "sizes": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "prints": [
+      "Consulte opções"
+    ],
+    "images": [
+      "/products/jennynha-fem-01.jpg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true,
+    "stockMode": "consult"
+  }
+]

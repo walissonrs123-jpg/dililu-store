@@ -1,0 +1,17 @@
+# Decisões
+- D001: Finalização pelo WhatsApp.
+- D002: Catálogo versionado no código.
+- D003: Carrinho em localStorage.
+- D004: S3 + CloudFront para hospedagem.
+- D005: Sem banco e sem painel admin web na V1.1.
+- D006: Sem Meta API e sem postagem automática.
+- D007: Planner em `content/`; Meta Business Suite usado manualmente e gratuitamente.
+- D008: Sem impulsionamento pago nesta fase.
+- D009: Story prioriza peça sozinha; Feed prioriza criança usando a peça.
+- D010: Não declarar envio nacional.
+- D011: Planejamento AWS registrado em `docs/AWS_PLAN.md` em 2026-09-24; sem provisionamento e sem conclusão antecipada de M8/M9. Propostas técnicas serão validadas com o build e os dados reais da conta.
+- D012: Endereço provisório confirmado pelo usuário: `dililu.sofbrasil.com.br`. Priorizar a zona Route 53 existente de `sofbrasil.com.br`, gerenciando apenas os registros necessários ao subdomínio e à validação do certificado.
+- D013: Conta AWS validada `320169806724`; Terraform com allowed_account_ids para evitar execução em outra conta. Reutilizar zona `Z0676301JLBSS7IFN575`; certificados existentes não cobrem Dililu, portanto planejar certificado específico.
+- D014: Preparação antecipada da infraestrutura autorizada pelo usuário; DNS de publicação permanece desligado até existir artefato validado. Sem apply ou contorno via CLI da proibição existente. Separar estado e site em dois conjuntos Terraform.
+- D015: Em 2026-09-24, autorização explícita excepcional para um único apply das 13 criações de site, condicionado à comparação do novo plano com o validado e zero changes/destroys. Bootstrap (6 criações), publicação DNS, upload e futuros applies não autorizados. Estado local preservado, pois criar o backend excederia essa autorização.
+- D016: M0 usa Node 24 LTS e Git locais em `.tools/`, export Next.js estático e build com dois workers para reduzir carga na máquina. Dependências fixadas no package-lock; validações agrupadas em `npm run verify`.

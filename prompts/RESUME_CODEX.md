@@ -1,0 +1,1 @@
+Leia `AGENTS.md` e `docs/STATUS.md`. Retome do próximo marco incompleto em `docs/PLAN.md`. Consulte apenas os arquivos necessários ao marco atual e continue automaticamente até concluir ou encontrar um bloqueio real.

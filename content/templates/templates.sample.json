@@ -1,0 +1,23 @@
+{
+  "story_product": {
+    "format": "story",
+    "structure": [
+      "Título curto",
+      "Marca/atributo",
+      "Preço",
+      "Tamanhos/estampas",
+      "CTA WhatsApp"
+    ]
+  },
+  "feed_product": {
+    "format": "feed",
+    "structure": [
+      "Abertura curta",
+      "Benefícios confirmados",
+      "Preço",
+      "Tamanhos/estampas",
+      "CTA WhatsApp",
+      "Instagram"
+    ]
+  }
+}
