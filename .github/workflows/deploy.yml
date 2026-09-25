@@ -1,0 +1,38 @@
+name: Dililu OIDC readiness (no publication)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  oidc:
+    if: github.repository == 'walissonrs123-jpg/dililu-store' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Assume Dililu role through OIDC
+        uses: aws-actions/configure-aws-credentials@61815dcd50bd041e203e49132bacad1fd04d2708 # v5.1.1
+        with:
+          role-to-assume: arn:aws:iam::320169806724:role/dililu-github-deploy
+          aws-region: us-east-1
+          allowed-account-ids: '320169806724'
+          role-session-name: dililu-${{ github.run_id }}
+          role-duration-seconds: 900
+          unset-current-credentials: true
+      - name: Confirm assumed role
+        shell: bash
+        run: |
+          set -euo pipefail
+          identity="$(aws sts get-caller-identity --query Arn --output text)"
+          case "$identity" in
+            arn:aws:sts::320169806724:assumed-role/dililu-github-deploy/*) ;;
+            *) echo 'Unexpected AWS identity'; exit 1 ;;
+          esac
+          echo 'OIDC authenticated. Publication requires separate authorization.'
+    # No environment: the approved trust uses the main branch subject.
+    # No upload, invalidation or DNS operations are authorized in this workflow.

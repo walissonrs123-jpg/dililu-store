@@ -1,4 +1,4 @@
-﻿# STATUS — Dililu Store V1.1
+# STATUS — Dililu Store V1.1
 - Projeto: Catálogo + WhatsApp + Planejamento Instagram gratuito
 - Marco atual: M9
 - Estado: BLOCKED
@@ -16,7 +16,12 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. Próximo bloqueio: OIDC e preparação/validação da entrega, sujeitos a autorização específica. Nenhuma alteração AWS nesta etapa.
+M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; próximo bloqueio: validação manual da autenticação GitHub e autorização para implementação/publicação da entrega. Site não publicado.
+
+## OIDC autorizado — 2026-09-25
+- Provider GitHub criado; role dililu-github-deploy e única policy inline dililu-publish criadas. Trust main e as três permissões aprovadas confirmadas por leitura; zero policies gerenciadas anexadas.
+- Workflow manual deploy.yml apenas autentica e confirma identidade; não disparado. Sem upload, invalidação, DNS ou Terraform. Policies exatas versionadas em docs/iam/.
+- Código da aplicação intacto; build/testes não repetidos. Commit com [skip ci] evita repetir o CI no push desta configuração.
 
 ## Último marco concluído
 - M1–M7 implementados e commitados separadamente. M7: calendário de sete itens, templates Feed/Story/Reel, validação e export Markdown/CSV; agendamento manual.
@@ -38,13 +43,13 @@ M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-s
 - AWS CLI 2.37.1 e Terraform 1.16.4 disponíveis localmente em `.tools/`; provider AWS 6.66.0 fixado nos lockfiles. `awsTemp` ignorado no Git; credenciais usadas somente no ambiente do processo, sem exposição nos logs.
 - Provisionado somente `infra/site/`: S3 privado e vazio, CloudFront `E1EZ9JK9Q7UT7V` Deployed, ACM ISSUED. DNS de publicação ausente e registros preexistentes preservados; único registro novo é a validação ACM. Sem upload.
 - Bootstrap não aplicado. Estado local em `infra/site/terraform.tfstate`, com cópia `.local/site-post-apply.tfstate`. Preservar ambos; ignorados no Git.
-- Autorização de apply consumida na execução anterior; futuros applies continuam proibidos sem nova autorização. Build local confirmado; publicação, CSP, repositório GitHub e OIDC pendentes. Evidências AWS e IDs em `docs/AWS_VALIDATION.md`.
+- Autorização de apply consumida na execução anterior; futuros applies continuam proibidos sem nova autorização. Build local confirmado; publicação e validação de entrega/CSP pendentes; GitHub e IAM/OIDC configurados. Evidências AWS e IDs em `docs/AWS_VALIDATION.md`.
 
 ## Bloqueios
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
 - Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
-- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Nenhum ARN OIDC encontrado localmente; IAM, upload, invalidação e DNS continuam sem autorização.
+- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload, invalidação e DNS continuam sem autorização.
 
 
 

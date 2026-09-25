@@ -1,0 +1,8 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "ListDililuBucket", "Effect": "Allow", "Action": "s3:ListBucket", "Resource": "arn:aws:s3:::dililu-site-320169806724-prod"},
+    {"Sid": "PublishDililuObjects", "Effect": "Allow", "Action": "s3:PutObject", "Resource": "arn:aws:s3:::dililu-site-320169806724-prod/*"},
+    {"Sid": "InvalidateDililuDistribution", "Effect": "Allow", "Action": "cloudfront:CreateInvalidation", "Resource": "arn:aws:cloudfront::320169806724:distribution/E1EZ9JK9Q7UT7V"}
+  ]
+}
