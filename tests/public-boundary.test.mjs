@@ -4,7 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
-const forbidden = /^(docs|content|awsTemp|infra|\.git|\.tools|\.local)$|^\.env|\.(tfstate|tfplan|pem|key)$/i;
+const forbidden = /^(docs|content|awsTemp|infra|\.git|\.tools|\.local)$|^\.env|\.(tfstate|tfplan)(\..*)?$|\.(pem|key)$/i;
 
 async function assertPublicFiles(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {

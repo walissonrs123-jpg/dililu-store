@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "lint": "eslint src tests next.config.ts",
+    "lint": "eslint src tests scripts/*.mjs next.config.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "content:plan": "node scripts/generate-content-plan.mjs",

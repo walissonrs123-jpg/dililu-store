@@ -1,24 +1,29 @@
-# Publicação — pendente de autorização
+﻿# M9 — CI/CD e fechamento
 
-CI preparado em `.github/workflows/ci.yml`: Node 24, instalação pelo lockfile,
-lint/tipos/testes/build e planner. Sem credenciais AWS, upload ou alteração DNS.
-A execução remota depende do repositório GitHub ainda não informado.
+## Situação local
+- CI: PR, push em main e execução manual; somente contents: read, actions por SHA, Node 24, npm ci, lint/tipos/testes/build, planner e conferência dos exports versionados.
+- Sem job de deploy, credenciais AWS no workflow, upload, push ou alteração DNS. CI remoto ainda não executado.
+- Next.js usa output: export. Confirmar export pelo sucesso do build, sem ler/varrer out/.
+- Fechamento local em 2026-09-25: lint/tipos, 13 testes, build/export e comparação dos exports do planner PASS. CI remoto e entrega via CloudFront não testados nesta etapa.
+- M8 concluído: **13 criados, 0 alterados, 0 excluídos**. Sem consultas AWS ou Terraform nesta etapa.
 
-Antes de publicar: adicionar logo/fotos reais e revisar o catálogo; testar
-responsividade e fluxo de carrinho em navegador; definir OWNER/REPO e role OIDC
-restrita ao environment de produção. A criação da role não está autorizada pelo
-apply anterior, limitado às 13 criações já realizadas.
+## Dados externos necessários
+1. URL GitHub (https://github.com/OWNER/REPO) e acesso autenticado de escrita na máquina. Defaults: branch main, environment production. Não enviar senha/token pelo chat.
+2. ARN da role de deploy existente na conta 320169806724, compatível com OIDC desse repositório/environment; se não existir, informar isso e autorizar separadamente preparação/criação de provider/role. Fora das 13 criações anteriores.
+3. Logo oficial em public/brand/; fotos reais em public/products/, associadas aos IDs body-mbaby, short-mbaby, vestido-infantil, conjunto-jennynha-masculino e conjunto-jennynha-feminino. Informar associação e ordem principal/galeria.
+4. Aprovações distintas para push ao GitHub, IAM se necessário, upload/invalidação CloudFront e, após validação, DNS. Nenhuma dessas ações está autorizada agora.
 
-Com autorização específica futura, implementar o publicador descrito em
-`AWS_PLAN.md`: somente export estático, manifesto de rotas sem extensão e variantes
-com barra, Content-Type correto, assets antes do HTML e invalidação controlada.
-Nunca sincronizar a raiz, `docs/`, `content/`, `awsTemp` ou estados Terraform.
-Preservar artefato anterior para rollback e testar acesso direto/404 no CloudFront.
+Não reenviar credenciais AWS, domínio, conta, bucket ou distribuição: já registrados.
 
-Bucket: `dililu-site-320169806724-prod`.
-Distribuição: `E1EZ9JK9Q7UT7V` (`deagwveviqeg7.cloudfront.net`).
-Ativar `dililu.sofbrasil.com.br` somente após validação e nova autorização.
-Estado Terraform continua local; preservar arquivos já registrados em AWS_VALIDATION.
+## Ações após as autorizações correspondentes
+1. Integrar mídias; executar npm ci, npm run content:plan, npm run verify; testar responsividade, carrinho e acessibilidade em navegador.
+2. Sem remote atual: git remote add origin <URL> e git push -u origin main; acompanhar CI. Enviar somente arquivos versionados, nunca credenciais/estados ignorados.
+3. Validar/configurar OIDC: aud=sts.amazonaws.com e sub=repo:OWNER/REPO:environment:production, branch restrita e permissões limitadas ao bucket/distribuição. Preparar/revisar novo plano antes de qualquer criação IAM autorizada.
+4. Implementar/testar publicador e CSP compatível com o build. Apenas artefato estático permitido; manifesto de rotas sem extensão/com barra, Content-Type correto, assets antes do HTML. Não sincronizar a raiz nem usar --delete. Guardar release anterior para rollback.
+5. Com autorização de publicação, enviar ao bucket e executar aws cloudfront create-invalidation --distribution-id E1EZ9JK9Q7UT7V --paths "/*". Validar acesso direto, navegação, carrinho, HTTPS e 404 pelo CloudFront. DNS ainda desligado.
+6. Com autorização separada de DNS, preparar/revisar aliases A/AAAA de dililu.sofbrasil.com.br, preservar os demais registros e executar a alteração aprovada. Futuros applies exigem autorização explícita.
 
-M9 não concluído: CI remoto, OIDC, CSP validada em navegador, publicador e aprovação
-de lançamento continuam pendentes. Nenhuma publicação executada nesta etapa.
+Destino conhecido: s3://dililu-site-320169806724-prod; distribuição E1EZ9JK9Q7UT7V; hostname deagwveviqeg7.cloudfront.net.
+Preservar estado Terraform local e backup conforme AWS_VALIDATION.md.
+
+M9 parcial: faltam CI remoto, OIDC, mídia final, testes em navegador, CSP/publicador, validação de entrega e autorizações de lançamento.

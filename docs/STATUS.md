@@ -16,13 +16,14 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9: informar OWNER/REPO do GitHub para CI remoto/OIDC; fornecer logo/fotos reais e autorizar separadamente os recursos de deploy/publicação. CI local preparado, sem acesso AWS. Não executar novo plan/apply ou upload.
+M9 parcial: revisão local concluída em 2026-09-25. Dados externos e sequência de autorizações especificados em `docs/DEPLOY.md`. Aguardar URL GitHub/acesso, role OIDC ou autorização para criá-la e mídias oficiais. Sem consultas AWS, plan/apply, push, upload ou DNS.
 
 ## Último marco concluído
 - M1–M7 implementados e commitados separadamente. M7: calendário de sete itens, templates Feed/Story/Reel, validação e export Markdown/CSV; agendamento manual.
-- Último lote `npm run content:plan` + `npm run verify`: export PASS, lint PASS, typecheck PASS, testes 13/13 PASS, build estático PASS. Sem inspeção de artefatos gerados e sem upload.
+- Lote de fechamento local M9: `npm run content:plan`, `npm run verify` e comparação dos exports versionados PASS. Lint (incluindo scripts), typecheck, testes 13/13 e build/export estático PASS. Sem ler/varrer `out/` e sem upload.
 - M8 concluído com as evidências já registradas: 13 criados, 0 alterados, 0 excluídos. Nenhuma nova consulta AWS, plan ou apply nesta etapa.
-- M9 parcial: `.github/workflows/ci.yml` preparado com actions fixadas por SHA; execução no GitHub ainda não validada. Próximos passos em `docs/DEPLOY.md`.
+- CI revisado: actions fixadas por SHA, permissões de leitura, sem deploy e verificação de exports desatualizados. Testes aceitam fotos reais locais e barram backups Terraform em public. CI remoto ainda não executado.
+- Ainda faltam publicador de rotas estáticas, CSP e testes de navegador/entrega, além de CI remoto/OIDC e mídias finais. Esses itens não foram declarados concluídos pela validação de build.
 
 ## Execução econômica
 - Leituras restritas ao marco atual; validação em lote no fechamento. Sem novas consultas AWS nem plan/apply: resultado final já confirmado.
@@ -36,7 +37,7 @@ M9: informar OWNER/REPO do GitHub para CI remoto/OIDC; fornecer logo/fotos reais
 - AWS CLI 2.37.1 e Terraform 1.16.4 disponíveis localmente em `.tools/`; provider AWS 6.66.0 fixado nos lockfiles. `awsTemp` ignorado no Git; credenciais usadas somente no ambiente do processo, sem exposição nos logs.
 - Provisionado somente `infra/site/`: S3 privado e vazio, CloudFront `E1EZ9JK9Q7UT7V` Deployed, ACM ISSUED. DNS de publicação ausente e registros preexistentes preservados; único registro novo é a validação ACM. Sem upload.
 - Bootstrap não aplicado. Estado local em `infra/site/terraform.tfstate`, com cópia `.local/site-post-apply.tfstate`. Preservar ambos; ignorados no Git.
-- Autorização de apply consumida nesta execução; futuros applies continuam proibidos sem nova autorização. Pendências: aplicação/build, publicação, CSP, repositório GitHub e OIDC. Evidências e IDs em `docs/AWS_VALIDATION.md`.
+- Autorização de apply consumida na execução anterior; futuros applies continuam proibidos sem nova autorização. Build local confirmado; publicação, CSP, repositório GitHub e OIDC pendentes. Evidências AWS e IDs em `docs/AWS_VALIDATION.md`.
 
 ## Bloqueios
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.

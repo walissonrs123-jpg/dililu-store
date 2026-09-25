@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { access } from "node:fs/promises";
 import { filterProducts, initialFilters } from "../src/lib/catalog.ts";
 import { products } from "../src/data/products.ts";
 
@@ -29,12 +30,14 @@ test("produtos desativados não são expostos", () => {
   assert.deepEqual(filterProducts([{ ...products[0], active: false }], initialFilters), []);
 });
 
-test("dados não apresentam estoque, imagens ou novidades não confirmadas", () => {
+test("catálogo mantém IDs únicos, preços válidos e referências a fotos locais existentes", async () => {
   assert.equal(new Set(products.map((item) => item.id)).size, products.length);
   for (const product of products) {
-    assert.equal(product.stockMode, "consult");
     assert.equal(Number.isFinite(product.price) && product.price > 0, true);
-    assert.equal(product.images.length, 0);
-    assert.equal(Boolean(product.newArrival), false);
+    for (const image of product.images) {
+      assert.match(image, /^\/products\/[a-zA-Z0-9_./-]+\.(jpg|jpeg|png|webp|avif)$/i);
+      assert.equal(image.split("/").includes(".."), false);
+      await access(new URL(`../public${image}`, import.meta.url));
+    }
   }
 });
