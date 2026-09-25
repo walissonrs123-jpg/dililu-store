@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { pathToFileURL } from "node:url";
 
 const { chromium } = await import(pathToFileURL(`${process.env.PLAYWRIGHT_ROOT}/node_modules/playwright/index.mjs`).href);
-const base = "https://deagwveviqeg7.cloudfront.net";
+const base = process.env.SITE_URL || "https://deagwveviqeg7.cloudfront.net";
+assert(["https://deagwveviqeg7.cloudfront.net", "https://dililu.sofbrasil.com.br"].includes(base), "Unexpected validation host");
 const browser = await chromium.launch();
 try {
   for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {

@@ -1,0 +1,32 @@
+name: Validate published Dililu domain
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    if: github.repository == 'walissonrs123-jpg/dililu-store' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Prepare browser validation
+        run: |
+          npm install --prefix "$RUNNER_TEMP/dililu-browser" --no-save --package-lock=false playwright@1.58.2
+          node "$RUNNER_TEMP/dililu-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Wait for public DNS and HTTPS
+        run: |
+          curl --fail --silent --show-error --retry 20 --retry-all-errors --retry-delay 15 --max-time 20 --retry-max-time 360 --output /dev/null https://dililu.sofbrasil.com.br/
+      - name: Validate domain desktop and mobile
+        env:
+          SITE_URL: https://dililu.sofbrasil.com.br
+        run: PLAYWRIGHT_ROOT="$RUNNER_TEMP/dililu-browser" node scripts/smoke-cloudfront.mjs
+    # Public HTTPS only: no AWS authentication, upload, build or infrastructure changes.
