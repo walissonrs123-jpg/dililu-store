@@ -19,9 +19,16 @@ for path in sorted(ROOT.rglob("*")):
     key = path.relative_to(ROOT).as_posix()
     if any(part.startswith(".") or part in ("docs", "content", "node_modules") for part in path.relative_to(ROOT).parts):
         raise SystemExit(f"Private path in export: {key}")
-    if path.suffix.lower() not in {".html", ".txt", ".js", ".css", ".json", ".xml", ".ico", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif", ".gif", ".woff", ".woff2", ".ttf"}:
+    generated_image = key == "opengraph-image"
+    if generated_image:
+        with path.open("rb") as image:
+            if image.read(8) != b"\x89PNG\r\n\x1a\n":
+                raise SystemExit("Unexpected Open Graph image format")
+    if not generated_image and path.suffix.lower() not in {".html", ".txt", ".js", ".css", ".json", ".xml", ".ico", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif", ".gif", ".woff", ".woff2", ".ttf"}:
         raise SystemExit(f"Unexpected export type: {key}")
     mime = {".js": "application/javascript", ".html": "text/html; charset=utf-8", ".txt": "text/plain; charset=utf-8", ".css": "text/css; charset=utf-8"}.get(path.suffix) or mimetypes.guess_type(key)[0] or "application/octet-stream"
+    if generated_image:
+        mime = "image/png"
     cache = "public,max-age=31536000,immutable" if key.startswith("_next/static/") else "public,max-age=0,must-revalidate"
     uploads.append((path, key, mime, cache))
     # S3 REST origins do not resolve extensionless routes or directory indexes.
