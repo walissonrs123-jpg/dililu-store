@@ -101,3 +101,10 @@ Configuração proposta por consumo, sem contratação de plano CloudFront de pr
 Ainda não há orçamento mensal aprovado ou tráfego/mídia estimados. A estimativa deve considerar tamanho de arquivos e versões S3, requests, transferência CloudFront e invalidações. Nenhuma promessa de custo zero ou teto automático foi feita.
 
 Fontes: [ACM](https://aws.amazon.com/certificate-manager/pricing/), [S3](https://aws.amazon.com/s3/pricing/), [CloudFront](https://aws.amazon.com/cloudfront/pricing/), [Route 53](https://aws.amazon.com/route53/pricing/).
+
+## Publicação autorizada — 2026-09-25
+- Workflow https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36167487484, commit 45d80cbf49274c0123c81b9997f6da9479f3da18: build, OIDC, upload, invalidação e testes PASS.
+- Role arn:aws:iam::320169806724:role/dililu-github-deploy; bucket dililu-site-320169806724-prod: 119 objetos enviados, zero exclusões.
+- Distribuição E1EZ9JK9Q7UT7V; invalidação I5V10TZAG2Q9XQ9PMDI7KI8DI0 concluída. URL https://deagwveviqeg7.cloudfront.net.
+- Home, catálogo, produto, tamanho, carrinho/persistência, WhatsApp, logo/placeholders, rotas diretas e mobile: PASS em Chromium 1440px/390px.
+- DNS permanece desativado; IAM/OIDC, Terraform e infraestrutura não alterados. Validação limitada aos fluxos e navegadores descritos.

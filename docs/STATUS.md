@@ -16,11 +16,17 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; autenticação GitHub validada; próxima etapa: retomar implementação/publicação da entrega em execução separada, conforme autorização anterior; esta execução foi restrita à policy. Site não publicado.
+Site publicado e validado em https://deagwveviqeg7.cloudfront.net. M9: entrega via OIDC e testes funcionais concluídos; ativação do domínio depende de autorização específica. DNS de publicação permanece desativado.
 
+## Publicação CloudFront — 2026-09-25
+- Build/export PASS do commit `45d80cbf49274c0123c81b9997f6da9479f3da18`; workflow [36167487484](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36167487484) PASS, exclusivamente via role OIDC dililu-github-deploy.
+- 119 objetos publicados somente em dililu-site-320169806724-prod, sem exclusões. Assets antes de HTML; aliases de rotas sem extensão e com barra final; Content-Type e Cache-Control explícitos.
+- Invalidação `I5V10TZAG2Q9XQ9PMDI7KI8DI0` da distribuição E1EZ9JK9Q7UT7V concluída; GetInvalidation usado somente para aguardar.
+- Chromium desktop 1440px e mobile 390px PASS: Home, catálogo/filtro, produto, tamanho M, carrinho/quantidade/persistência, destino WhatsApp sem envio, logo/placeholders, rotas diretas e ausência de overflow/erros de console.
+- Dois bloqueios locais do publicador corrigidos antes de qualquer upload: ignorar .gitkeep e reconhecer PNG Open Graph sem extensão. Nenhuma alteração na aplicação, IAM/OIDC, DNS, Terraform ou infraestrutura.
 ## Permissão de acompanhamento da invalidação
 - Adicionado somente cloudfront:GetInvalidation à inline dililu-publish, restrito a arn:aws:cloudfront::320169806724:distribution/E1EZ9JK9Q7UT7V. Policy anterior conferida e resultado confirmado por leitura: PASS.
-- Nenhuma mudança na trust, S3, DNS ou Terraform; nenhum deploy iniciado. Bloqueio de permissão resolvido; publicação/validação funcional pendentes para execução separada.
+- Nenhuma mudança na trust, S3, DNS ou Terraform; nenhum deploy iniciado. Bloqueio de permissão resolvido; publicação e validação funcional concluídas na execução posterior acima.
 
 ## OIDC autorizado — 2026-09-25
 - Provider GitHub criado; role dililu-github-deploy e única policy inline dililu-publish criadas. Trust main e as três permissões aprovadas confirmadas por leitura; zero policies gerenciadas anexadas.
@@ -53,7 +59,7 @@ M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-s
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
 - Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
-- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload e invalidação autorizados anteriormente, mas adiados por instrução para outra execução; DNS continua sem autorização.
+- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload/invalidação e validação CloudFront concluídos; DNS continua sem autorização.
 
 
 
