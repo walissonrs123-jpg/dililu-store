@@ -6,7 +6,17 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $cli = Get-ChildItem -LiteralPath (Join-Path $root '.tools') -Filter aws.exe -Recurse | Select-Object -First 1
 if (-not $cli) { throw 'AWS CLI local ausente.' }
-$lines = @([IO.File]::ReadAllLines((Resolve-Path -LiteralPath $CredentialFile).Path) | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+$protectedFile = Join-Path $root '.local/aws-credentials.dpapi'
+if (-not $PSBoundParameters.ContainsKey('CredentialFile') -and (Test-Path -LiteralPath $protectedFile)) {
+    $encrypted = (Get-Content -Raw -LiteralPath $protectedFile).Trim()
+    $secure = ConvertTo-SecureString -String $encrypted
+    $credential = [pscredential]::new('local', $secure).GetNetworkCredential().Password | ConvertFrom-Json
+    $lines = @($credential.AccessKeyId, $credential.SecretAccessKey)
+    $credential = $null
+    $secure.Dispose()
+} else {
+    $lines = @([IO.File]::ReadAllLines((Resolve-Path -LiteralPath $CredentialFile).Path) | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+}
 if ($lines.Count -ne 2 -or $lines[0] -notmatch '^AKIA[A-Z0-9]{16}$' -or $lines[1] -notmatch '^[A-Za-z0-9/+=]{40}$') {
     throw 'Formato nao reconhecido: esperado par de credenciais IAM em duas linhas. Nenhum segredo foi exibido.'
 }

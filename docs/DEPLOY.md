@@ -26,4 +26,4 @@ Não reenviar credenciais AWS, domínio, conta, bucket ou distribuição: já re
 Destino conhecido: s3://dililu-site-320169806724-prod; distribuição E1EZ9JK9Q7UT7V; hostname deagwveviqeg7.cloudfront.net.
 Preservar estado Terraform local e backup conforme AWS_VALIDATION.md.
 
-M9 parcial: faltam CI remoto, OIDC, mídia final, testes em navegador, CSP/publicador, validação de entrega e autorizações de lançamento.
+M9 parcial: faltam destino GitHub real, CI remoto, OIDC, mídia final, testes em navegador, publicador e validação de entrega. CSP base local implementada; limitações, proteção DPAPI e role/políticas necessárias em `LOCAL_SECURITY.md`. Push autorizado pelo usuário, mas o OWNER informado é placeholder; IAM, S3, invalidação e DNS continuam sem autorização.

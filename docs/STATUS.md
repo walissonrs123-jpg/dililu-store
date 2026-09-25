@@ -16,14 +16,15 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: revisão local concluída em 2026-09-25. Dados externos e sequência de autorizações especificados em `docs/DEPLOY.md`. Aguardar URL GitHub/acesso, role OIDC ou autorização para criá-la e mídias oficiais. Sem consultas AWS, plan/apply, push, upload ou DNS.
+M9 parcial: aguardar OWNER/REPO real — `SEU_USUARIO/dililu-store` é placeholder. Push foi autorizado, mas remote/push não foram executados sem destino válido. OIDC verificado somente nos arquivos locais: nenhum ARN de role configurado. Role/políticas necessárias em `docs/LOCAL_SECURITY.md`; não criar IAM.
 
 ## Último marco concluído
 - M1–M7 implementados e commitados separadamente. M7: calendário de sete itens, templates Feed/Story/Reel, validação e export Markdown/CSV; agendamento manual.
-- Lote de fechamento local M9: `npm run content:plan`, `npm run verify` e comparação dos exports versionados PASS. Lint (incluindo scripts), typecheck, testes 13/13 e build/export estático PASS. Sem ler/varrer `out/` e sem upload.
+- Último `npm run verify`: lint (incluindo scripts), typecheck, testes 15/15 e build/export estático PASS. Sintaxe PowerShell e proteção/leitura DPAPI PASS. Sem ler/varrer `out/` e sem upload.
 - M8 concluído com as evidências já registradas: 13 criados, 0 alterados, 0 excluídos. Nenhuma nova consulta AWS, plan ou apply nesta etapa.
 - CI revisado: actions fixadas por SHA, permissões de leitura, sem deploy e verificação de exports desatualizados. Testes aceitam fotos reais locais e barram backups Terraform em public. CI remoto ainda não executado.
-- Ainda faltam publicador de rotas estáticas, CSP e testes de navegador/entrega, além de CI remoto/OIDC e mídias finais. Esses itens não foram declarados concluídos pela validação de build.
+- CSP base aplicada via meta no layout, com exceções inline necessárias ao export estático; sem eval em produção. CSP estrita por hashes/cabeçalho e testes em navegador/entrega continuam pendentes, conforme `docs/LOCAL_SECURITY.md`.
+- Cópia da credencial protegida por DPAPI em `.local/aws-credentials.dpapi`; script de acesso prefere essa cópia. `awsTemp` original preservado em texto, ambos ignorados pelo Git. Nenhuma chamada AWS executada.
 
 ## Execução econômica
 - Leituras restritas ao marco atual; validação em lote no fechamento. Sem novas consultas AWS nem plan/apply: resultado final já confirmado.
@@ -42,7 +43,7 @@ M9 parcial: revisão local concluída em 2026-09-25. Dados externos e sequência
 ## Bloqueios
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial e fotos reais ainda não foram fornecidas. As pastas `public/brand/` e `public/products/` estão preparadas; não substituir os materiais oficiais por imagens inventadas.
-- Repositório GitHub não informado; CI remoto e configuração OIDC dependem dessa identificação. Futuros recursos AWS, upload e ativação DNS precisam de autorização específica.
+- GitHub informado com OWNER placeholder; aguardando identificação real para remote/push. Não foi encontrado ARN OIDC local; nenhuma existência de role AWS foi presumida. Mídias oficiais ausentes nas pastas previstas. IAM, upload, invalidação e DNS continuam sem autorização.
 
 
 
