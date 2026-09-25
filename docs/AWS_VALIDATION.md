@@ -108,3 +108,11 @@ Fontes: [ACM](https://aws.amazon.com/certificate-manager/pricing/), [S3](https:/
 - Distribuição E1EZ9JK9Q7UT7V; invalidação I5V10TZAG2Q9XQ9PMDI7KI8DI0 concluída. URL https://deagwveviqeg7.cloudfront.net.
 - Home, catálogo, produto, tamanho, carrinho/persistência, WhatsApp, logo/placeholders, rotas diretas e mobile: PASS em Chromium 1440px/390px.
 - DNS permanece desativado; IAM/OIDC, Terraform e infraestrutura não alterados. Validação limitada aos fluxos e navegadores descritos.
+
+## Ativação DNS autorizada — 2026-09-25
+- Preflight confirmou hostname exato dililu.sofbrasil.com.br no CloudFront E1EZ9JK9Q7UT7V e ACM ISSUED já documentado; nenhuma alteração nesses serviços.
+- Criados somente A/AAAA alias em Z0676301JLBSS7IFN575 para deagwveviqeg7.cloudfront.net, alias zone Z2FDTNDATAQYW2 e EvaluateTargetHealth=false.
+- Change /change/C072936317K1C4M5CWAM0 INSYNC. Comparação integral antes/depois: 8 registros preexistentes preservados. Nenhum MX/TXT/SPF/DKIM/DMARC modificado.
+- HTTPS público e navegação desktop/mobile PASS em https://dililu.sofbrasil.com.br; workflow https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36168542083. Home, catálogo, produto/tamanho, carrinho e destino WhatsApp validados sem envio de mensagem.
+- Criados via CLI, sem executar Terraform. Aliases ainda não gerenciados no estado Terraform; reconciliar/importar antes de futuro apply autorizado. Identificadores: Z0676301JLBSS7IFN575_dililu.sofbrasil.com.br_A e Z0676301JLBSS7IFN575_dililu.sofbrasil.com.br_AAAA.
+- Referência: [Route 53 para CloudFront](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-cloudfront-distribution.html).

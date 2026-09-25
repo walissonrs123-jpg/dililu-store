@@ -1,7 +1,7 @@
 # STATUS — Dililu Store V1.1
 - Projeto: Catálogo + WhatsApp + Planejamento Instagram gratuito
 - Marco atual: M9
-- Estado: BLOCKED
+- Estado: PUBLICADO
 
 ## Marcos
 - [x] M0 Bootstrap
@@ -16,7 +16,13 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-Site publicado e validado em https://deagwveviqeg7.cloudfront.net. M9: entrega via OIDC e testes funcionais concluídos; ativação do domínio depende de autorização específica. DNS de publicação permanece desativado.
+Domínio https://dililu.sofbrasil.com.br publicado e validado. Nenhum bloqueio de DNS/publicação. M9: CI/CD, entrega e testes funcionais concluídos; revisão final de segurança/performance e fotos reais continuam fora desta execução.
+
+## Domínio publicado — 2026-09-25
+- Hostname dililu.sofbrasil.com.br confirmado exatamente no alias CloudFront E1EZ9JK9Q7UT7V e certificado ACM ISSUED antes da mudança.
+- Criados somente aliases A/AAAA previstos, zona Z0676301JLBSS7IFN575, destino deagwveviqeg7.cloudfront.net. Change C072936317K1C4M5CWAM0 INSYNC; todos os 8 registros preexistentes preservados por comparação integral.
+- HTTPS e testes Chromium desktop/mobile pelo domínio PASS: Home, catálogo, produto/tamanho, carrinho/persistência e WhatsApp sem envio. Workflow https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36168542083.
+- Nenhuma alteração IAM/OIDC, S3, CloudFront ou Terraform. DNS criado via CLI autorizada; antes de futuro gerenciamento Terraform, reconciliar/importar os dois aliases com autorização própria. Nenhum import/plan/apply executado.
 
 ## Publicação CloudFront — 2026-09-25
 - Build/export PASS do commit `45d80cbf49274c0123c81b9997f6da9479f3da18`; workflow [36167487484](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36167487484) PASS, exclusivamente via role OIDC dililu-github-deploy.
@@ -43,7 +49,7 @@ Site publicado e validado em https://deagwveviqeg7.cloudfront.net. M9: entrega v
 
 ## Execução econômica
 - Leituras restritas ao marco atual; validação em lote no fechamento. Sem novas consultas AWS nem plan/apply: resultado final já confirmado.
-- M8/AWS: **13 recursos criados, 0 alterados, 0 excluídos**. DNS de publicação desativado; site não publicado. Infra provisionada; integração e fechamento dependem da aplicação.
+- M8/AWS: **13 recursos criados, 0 alterados, 0 excluídos**. Provisionamento inicial preservado; publicação e ativação DNS posteriores concluídas conforme registros acima.
 
 ## Planejamento AWS
 - Em 2026-09-24, arquitetura, publicação estática, OIDC, estado Terraform, custos e critérios de aceite detalhados em `docs/AWS_PLAN.md`, a pedido do usuário.
@@ -59,7 +65,7 @@ Site publicado e validado em https://deagwveviqeg7.cloudfront.net. M9: entrega v
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
 - Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
-- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload/invalidação e validação CloudFront concluídos; DNS continua sem autorização.
+- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload/invalidação, DNS autorizado e validação pelo domínio final concluídos.
 
 
 
