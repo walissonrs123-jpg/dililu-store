@@ -1,7 +1,9 @@
 import type { Product } from "../lib/catalog.ts";
 
 // Prices/attributes from PROJECT_SPEC; sizes from the supplied sample are
-// reference sizes only, never inventory. Real media has not been supplied.
+// reference sizes only, never inventory. Real product media has not been supplied.
+// To replace placeholders, save official photos in public/products/ and fill
+// images with /products/filename.ext paths, cover first, then gallery photos.
 export const products: Product[] = [
   { id: "body-mbaby", slug: "body-mbaby", name: "Body M Baby", shortDescription: "Body infantil com tecido toque de pêssego.", brand: "M Baby", material: "Toque de pêssego", category: "bodies", audience: "bebe", price: 34.9, sizes: ["P", "M", "G", "GG"], images: [], active: true, stockMode: "consult" },
   { id: "short-mbaby", slug: "short-mbaby", name: "Short M Baby", shortDescription: "Short infantil. Consulte estampas e tamanhos no atendimento.", brand: "M Baby", category: "shorts", audience: "bebe", price: 19.9, sizes: ["P", "M", "G", "GG"], images: [], active: true, stockMode: "consult" },

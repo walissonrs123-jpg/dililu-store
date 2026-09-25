@@ -6,6 +6,7 @@ import { ActionLink, Button, Select } from "@/components/ui";
 import { formatPrice, type Product } from "@/lib/catalog";
 import { store } from "@/lib/store";
 import { useCart } from "@/components/use-cart";
+import { ProductPlaceholder } from "@/components/product-placeholder";
 
 export function ProductDetails({ product }: { product: Product }) {
   const [image, setImage] = useState(0);
@@ -16,7 +17,7 @@ export function ProductDetails({ product }: { product: Product }) {
   const message = `Olá, Dililu! Tenho interesse em ${product.name}. Tamanho: ${size || "a consultar"}. Estampa: ${print || "a consultar"}. Preço: ${formatPrice(product.price)}. Pode confirmar a disponibilidade e as opções de entrega ou retirada?`;
   return <div className="mt-8 grid gap-10 lg:grid-cols-2">
     <div>
-      {product.images[image] ? <Image src={product.images[image]} width={800} height={960} alt={`${product.name} — foto ${image + 1}`} className="aspect-[5/6] w-full rounded-card bg-mint object-contain" priority /> : <div className="flex aspect-[5/4] items-center justify-center rounded-card bg-mint p-10 text-center text-muted">Fotos desta peça disponíveis mediante consulta pelo WhatsApp.</div>}
+      {product.images[image] ? <Image src={product.images[image]} width={800} height={960} alt={`${product.name} — foto ${image + 1}`} className="aspect-[5/6] w-full rounded-card bg-mint object-contain" priority /> : <ProductPlaceholder className="rounded-card border border-line" />}
       {product.images.length > 1 && <div className="mt-4 flex flex-wrap gap-2" aria-label="Fotos do produto">{product.images.map((source, index) => <Button key={source} variant="secondary" aria-pressed={index === image} onClick={() => setImage(index)}>Foto {index + 1}</Button>)}</div>}
     </div>
     <div className="space-y-6">

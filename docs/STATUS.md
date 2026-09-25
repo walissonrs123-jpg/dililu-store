@@ -16,11 +16,11 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: aguardar OWNER/REPO real — `SEU_USUARIO/dililu-store` é placeholder. Push foi autorizado, mas remote/push não foram executados sem destino válido. OIDC verificado somente nos arquivos locais: nenhum ARN de role configurado. Role/políticas necessárias em `docs/LOCAL_SECURITY.md`; não criar IAM.
+M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. Próximo bloqueio: OIDC e preparação/validação da entrega, sujeitos a autorização específica. Nenhuma alteração AWS nesta etapa.
 
 ## Último marco concluído
 - M1–M7 implementados e commitados separadamente. M7: calendário de sete itens, templates Feed/Story/Reel, validação e export Markdown/CSV; agendamento manual.
-- Último `npm run verify`: lint (incluindo scripts), typecheck, testes 15/15 e build/export estático PASS. Sintaxe PowerShell e proteção/leitura DPAPI PASS. Sem ler/varrer `out/` e sem upload.
+- Integração da logo/placeholders: `npm run verify` executado uma única vez; lint, typecheck, testes 15/15 e build/export estático PASS. Sem ler/varrer `out/`, sem upload e sem alterações AWS/IAM/Terraform/DNS.
 - M8 concluído com as evidências já registradas: 13 criados, 0 alterados, 0 excluídos. Nenhuma nova consulta AWS, plan ou apply nesta etapa.
 - CI revisado: actions fixadas por SHA, permissões de leitura, sem deploy e verificação de exports desatualizados. Testes aceitam fotos reais locais e barram backups Terraform em public. CI remoto ainda não executado.
 - CSP base aplicada via meta no layout, com exceções inline necessárias ao export estático; sem eval em produção. CSP estrita por hashes/cabeçalho e testes em navegador/entrega continuam pendentes, conforme `docs/LOCAL_SECURITY.md`.
@@ -42,8 +42,9 @@ M9 parcial: aguardar OWNER/REPO real — `SEU_USUARIO/dililu-store` é placehold
 
 ## Bloqueios
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
-- Logo oficial e fotos reais ainda não foram fornecidas. As pastas `public/brand/` e `public/products/` estão preparadas; não substituir os materiais oficiais por imagens inventadas.
-- GitHub informado com OWNER placeholder; aguardando identificação real para remote/push. Não foi encontrado ARN OIDC local; nenhuma existência de role AWS foi presumida. Mídias oficiais ausentes nas pastas previstas. IAM, upload, invalidação e DNS continuam sem autorização.
+- Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
+- Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
+- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Nenhum ARN OIDC encontrado localmente; IAM, upload, invalidação e DNS continuam sem autorização.
 
 
 
