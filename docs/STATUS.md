@@ -16,7 +16,11 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; autenticação GitHub validada; próximo bloqueio: autorização para implementação/publicação da entrega. Site não publicado.
+M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; autenticação GitHub validada; próxima etapa: retomar implementação/publicação da entrega em execução separada, conforme autorização anterior; esta execução foi restrita à policy. Site não publicado.
+
+## Permissão de acompanhamento da invalidação
+- Adicionado somente cloudfront:GetInvalidation à inline dililu-publish, restrito a arn:aws:cloudfront::320169806724:distribution/E1EZ9JK9Q7UT7V. Policy anterior conferida e resultado confirmado por leitura: PASS.
+- Nenhuma mudança na trust, S3, DNS ou Terraform; nenhum deploy iniciado. Bloqueio de permissão resolvido; publicação/validação funcional pendentes para execução separada.
 
 ## OIDC autorizado — 2026-09-25
 - Provider GitHub criado; role dililu-github-deploy e única policy inline dililu-publish criadas. Trust main e as três permissões aprovadas confirmadas por leitura; zero policies gerenciadas anexadas.
@@ -49,7 +53,7 @@ M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-s
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
 - Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
-- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload, invalidação e DNS continuam sem autorização.
+- GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload e invalidação autorizados anteriormente, mas adiados por instrução para outra execução; DNS continua sem autorização.
 
 
 
