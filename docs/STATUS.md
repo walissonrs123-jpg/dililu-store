@@ -16,11 +16,11 @@
 - [ ] M9 CI/CD + fechamento
 
 ## Próxima ação
-M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; próximo bloqueio: validação manual da autenticação GitHub e autorização para implementação/publicação da entrega. Site não publicado.
+M9 parcial: origin configurado em `https://github.com/walissonrs123-jpg/dililu-store`, branch main já publicada. Logo oficial integrada; produtos sem fotos reais usam placeholder neutro. OIDC configurado conforme autorização; autenticação GitHub validada; próximo bloqueio: autorização para implementação/publicação da entrega. Site não publicado.
 
 ## OIDC autorizado — 2026-09-25
 - Provider GitHub criado; role dililu-github-deploy e única policy inline dililu-publish criadas. Trust main e as três permissões aprovadas confirmadas por leitura; zero policies gerenciadas anexadas.
-- Workflow manual deploy.yml apenas autentica e confirma identidade; não disparado. Sem upload, invalidação, DNS ou Terraform. Policies exatas versionadas em docs/iam/.
+- Workflow manual deploy.yml autenticou e confirmou a role dililu-github-deploy na conta 320169806724: PASS, run 36133208998, tentativa 2. Subject da trust corrigido para IDs imutáveis do GitHub; mesma main/repositório e permissões, única repetição autorizada. Sem upload, invalidação, DNS ou Terraform. Policies exatas versionadas em docs/iam/.
 - Código da aplicação intacto; build/testes não repetidos. Commit com [skip ci] evita repetir o CI no push desta configuração.
 
 ## Último marco concluído
