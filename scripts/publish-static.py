@@ -14,6 +14,8 @@ for path in sorted(ROOT.rglob("*")):
         raise SystemExit("Symlinks are not publishable")
     if not path.is_file():
         continue
+    if path.name == ".gitkeep":
+        continue
     key = path.relative_to(ROOT).as_posix()
     if any(part.startswith(".") or part in ("docs", "content", "node_modules") for part in path.relative_to(ROOT).parts):
         raise SystemExit(f"Private path in export: {key}")
