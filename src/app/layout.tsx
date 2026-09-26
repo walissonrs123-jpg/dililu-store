@@ -7,6 +7,7 @@ import { contentSecurityPolicy } from "@/lib/csp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(store.url),
+  icons: { icon: "/brand/logo-dililu.png" },
   title: "Dililu | Moda bebê e infantil",
   description: "Moda bebê e infantil em Uberlândia/MG. Fale com a Dililu pelo WhatsApp.",
   openGraph: { type: "website", locale: "pt_BR", siteName: "Dililu", title: "Dililu | Moda bebê e infantil", description: "Conheça as peças e consulte tamanhos e disponibilidade pelo WhatsApp." },

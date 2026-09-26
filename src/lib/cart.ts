@@ -1,5 +1,5 @@
 import { products } from "../data/products.ts";
-import { formatPrice } from "./catalog.ts";
+import { formatPrice, productPrice } from "./catalog.ts";
 
 export type CartItem = { productId: string; size: string; print: string; quantity: number };
 export const cartKey = "dililu.cart.v1";
@@ -28,10 +28,11 @@ export function parseCart(raw: string): CartItem[] {
   } catch { return []; }
 }
 
-export function totalCents(items: CartItem[]) {
+export function totalCents(items: CartItem[]): number | null {
+  if (items.some((item) => products.find((entry) => entry.id === item.productId)?.price === null)) return null;
   return items.reduce((sum, item) => {
     const product = products.find((entry) => entry.id === item.productId);
-    return sum + (product ? Math.round(product.price * 100) * item.quantity : 0);
+    return sum + (product && product.price !== null ? Math.round(product.price * 100) * item.quantity : 0);
   }, 0);
 }
 
@@ -40,8 +41,9 @@ export function whatsappMessage(items: CartItem[]) {
   for (const item of items) {
     const product = products.find((entry) => entry.id === item.productId);
     if (!product) continue;
-    lines.push(`${item.quantity} × ${product.name}`, `Tamanho: ${item.size} | Estampa: ${item.print}`, `Preço unitário: ${formatPrice(product.price)} | Subtotal: ${formatPrice(Math.round(product.price * 100) * item.quantity / 100)}`, "");
+    lines.push(`${item.quantity} × ${product.name}`, `Tamanho de referência desejado: ${item.size} | Estampa: ${item.print}`, `Preço unitário: ${productPrice(product)} | Subtotal: ${formatPrice(product.price === null ? null : Math.round(product.price * 100) * item.quantity / 100)}`, "");
   }
-  lines.push(`Subtotal dos produtos: ${formatPrice(totalCents(items) / 100)}`, "", "Pode confirmar disponibilidade, estampas e opções/valores de entrega ou retirada? Pagamento via Pix.");
+  const total = totalCents(items);
+  lines.push(`Subtotal dos produtos: ${formatPrice(total === null ? null : total / 100)}`, "", "Consulte tamanhos disponíveis. Entrega ou retirada a combinar.");
   return lines.join("\n");
 }

@@ -2,77 +2,77 @@
 
 Horários: America/Sao_Paulo. Agendamento manual no Meta Business Suite. Revisar texto e mídia antes de publicar.
 
-## 2026-09-28 09:00 — Body M Baby
+## 2026-09-28 09:00 — Conheça o catálogo Dililu
 
-Formato: story · Status: planned · Produto: body-mbaby
+Formato: story · Status: planned · Produto: —
 
-Body M Baby na Dililu. Body infantil com tecido toque de pêssego. Preço: R$ 34,90. Consulte tamanhos, estampas e disponibilidade.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Foto real da peça sozinha em fundo Dililu. Não simular estampas ou atributos.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Fale com a Dililu pelo WhatsApp: (34) 99641-9677.
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** Selecionar foto real antes de marcar ready.
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
-## 2026-09-29 19:00 — Short M Baby
+## 2026-09-29 19:00 — Conheça o catálogo Dililu
 
-Formato: feed · Status: planned · Produto: short-mbaby
+Formato: feed · Status: planned · Produto: —
 
-Conheça Short M Baby. Short infantil. Consulte estampas e tamanhos no atendimento. Preço: R$ 19,90. Atendimento em Uberlândia/MG. Consulte entrega ou retirada.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Priorizar foto autorizada de criança usando a peça real. Revisar correspondência com o produto.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Consulte tamanhos e disponibilidade pelo WhatsApp. @dililu.moda
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** 
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
-## 2026-09-30 09:00 — Vestido infantil
+## 2026-09-30 09:00 — Conheça o catálogo Dililu
 
-Formato: story · Status: planned · Produto: vestido-infantil
+Formato: story · Status: planned · Produto: —
 
-Vestido infantil na Dililu. Consulte detalhes, tamanhos e estampas pelo WhatsApp. Preço: R$ 34,90. Consulte tamanhos, estampas e disponibilidade.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Foto real da peça sozinha em fundo Dililu. Não simular estampas ou atributos.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Fale com a Dililu pelo WhatsApp: (34) 99641-9677.
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** 
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
-## 2026-10-01 19:00 — Jennynha com cinto e bolsinha
+## 2026-10-01 19:00 — Conheça o catálogo Dililu
 
-Formato: feed · Status: planned · Produto: conjunto-jennynha-feminino
+Formato: feed · Status: planned · Produto: —
 
-Conheça Conjunto Jennynha Feminino. Conjunto 100% algodão com cinto e bolsinha inclusos. Preço: R$ 64,90. Atendimento em Uberlândia/MG. Consulte entrega ou retirada.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Priorizar foto autorizada de criança usando a peça real. Revisar correspondência com o produto.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Consulte tamanhos e disponibilidade pelo WhatsApp. @dililu.moda
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** 
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
-## 2026-10-02 09:00 — Conjunto Jennynha masculino
+## 2026-10-02 09:00 — Conheça o catálogo Dililu
 
-Formato: story · Status: planned · Produto: conjunto-jennynha-masculino
+Formato: story · Status: planned · Produto: —
 
-Conjunto Jennynha Masculino na Dililu. Conjunto infantil masculino 100% algodão. Preço: R$ 54,90. Consulte tamanhos, estampas e disponibilidade.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Foto real da peça sozinha em fundo Dililu. Não simular estampas ou atributos.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Fale com a Dililu pelo WhatsApp: (34) 99641-9677.
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** 
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
-## 2026-10-03 10:00 — Detalhes do tecido
+## 2026-10-03 10:00 — Conheça o catálogo Dililu
 
-Formato: reel · Status: planned · Produto: body-mbaby
+Formato: reel · Status: planned · Produto: —
 
-Veja os detalhes de Body M Baby. Body infantil com tecido toque de pêssego. Preço: R$ 34,90. Consulte as opções com a Dililu.
+Conheça as peças da Dililu. Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.
 
-**Mídia:** Vídeo real da peça: visão geral, tecido e detalhes confirmados. Sem inventar benefícios ou estoque.
+**Mídia:** Selecionar uma foto fornecida do catálogo e confirmar a correspondência antes de publicar.
 
-**CTA:** Converse com a gente pelo WhatsApp: (34) 99641-9677.
+**CTA:** Fale com a Dililu: https://wa.me/5534996419677
 
-**Notas:** 
+**Notas:** Referência antiga removida. Selecionar produto do novo catálogo antes de personalizar este rascunho.
 
 ## 2026-10-04 10:00 — Converse com a Dililu
 

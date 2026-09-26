@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ActionLink, Button, Select } from "@/components/ui";
-import { formatPrice, type Product } from "@/lib/catalog";
+import { productPrice, type Product } from "@/lib/catalog";
 import { store } from "@/lib/store";
 import { useCart } from "@/components/use-cart";
 import { ProductPlaceholder } from "@/components/product-placeholder";
@@ -14,7 +14,7 @@ export function ProductDetails({ product }: { product: Product }) {
   const [print, setPrint] = useState("");
   const [notice, setNotice] = useState("");
   const { add } = useCart();
-  const message = `Olá, Dililu! Tenho interesse em ${product.name}. Tamanho: ${size || "a consultar"}. Estampa: ${print || "a consultar"}. Preço: ${formatPrice(product.price)}. Pode confirmar a disponibilidade e as opções de entrega ou retirada?`;
+  const message = `Olá Dililu! Tenho interesse no produto: ${product.name}. Gostaria de consultar tamanhos disponíveis. Tamanho de referência desejado: ${size || "a consultar"}.`;
   return <div className="mt-8 grid gap-10 lg:grid-cols-2">
     <div>
       {product.images[image] ? <Image src={product.images[image]} width={800} height={960} alt={`${product.name} — foto ${image + 1}`} className="aspect-[5/6] w-full rounded-card bg-mint object-contain" priority /> : <ProductPlaceholder className="rounded-card border border-line" />}
@@ -22,13 +22,13 @@ export function ProductDetails({ product }: { product: Product }) {
     </div>
     <div className="space-y-6">
       <h1 className="font-display text-4xl leading-tight">{product.name}</h1>
-      <p className="text-2xl font-semibold">{formatPrice(product.price)}</p>
+      <p className="text-2xl font-semibold">{productPrice(product)}</p>
       <p className="text-muted">{product.description || product.shortDescription}</p>
       <dl className="space-y-2 text-sm">{product.brand && <div><dt className="inline font-semibold">Marca: </dt><dd className="inline">{product.brand}</dd></div>}{product.material && <div><dt className="inline font-semibold">Material: </dt><dd className="inline">{product.material}</dd></div>}</dl>
       <div><label htmlFor="produto-tamanho" className="mb-2 block text-sm font-semibold">Tamanho desejado</label><Select id="produto-tamanho" value={size} onChange={(event) => setSize(event.target.value)}><option value="">Consultar tamanho</option>{product.sizes.map((value) => <option key={value} value={value}>{/^\d+$/.test(value) ? `${value} anos` : value}</option>)}</Select></div>
       <div><label htmlFor="produto-estampa" className="mb-2 block text-sm font-semibold">Estampa desejada</label><Select id="produto-estampa" value={print} onChange={(event) => setPrint(event.target.value)}><option value="">Consultar estampas</option>{(product.prints ?? []).map((value) => <option key={value} value={value}>{value}</option>)}</Select></div>
-      <p className="text-sm text-muted">Tamanhos de referência. Confirme disponibilidade, estampas e entrega ou retirada antes de concluir a compra. Pagamento via Pix.</p>
-      <ActionLink href={`${store.whatsapp}?text=${encodeURIComponent(message)}`} className="w-full">Consultar pelo WhatsApp</ActionLink>
+      <p className="text-sm text-muted">Consulte tamanhos disponíveis. Atendimento em Uberlândia/MG. Entrega ou retirada a combinar.</p>
+      <ActionLink href={`${store.whatsapp}?text=${encodeURIComponent(message)}`} className="w-full">Pedir pelo WhatsApp</ActionLink>
       <Button className="w-full" variant="secondary" disabled={product.stockMode === "unavailable"} onClick={() => { const persisted = add({ productId: product.id, size: size || "A consultar", print: print || "A consultar", quantity: 1 }); setNotice(persisted ? "Peça adicionada ao carrinho." : "Peça adicionada nesta aba. Seu navegador não permitiu salvar o carrinho para a próxima visita."); }}>Adicionar ao carrinho</Button>
       <p role="status" className="text-sm text-muted">{notice}</p>
       {notice && <ActionLink href="/carrinho" variant="secondary">Ver carrinho</ActionLink>}

@@ -1,5 +1,5 @@
 import { products } from "../src/data/products.ts";
-import { formatPrice } from "../src/lib/catalog.ts";
+import { productPrice } from "../src/lib/catalog.ts";
 
 export const fields = ["id", "date", "time", "format", "productId", "title", "caption", "mediaSuggestion", "callToAction", "status", "notes"];
 const formats = ["feed", "story", "reel"];
@@ -20,7 +20,7 @@ export function buildPlan(input, templates) {
     const product = products.find((product) => product.active && product.id === item.productId);
     if (item.productId && !product) throw new Error(`productId desconhecido: ${item.id}`);
     const template = templates[item.format];
-    const variables = product ? { name: product.name, description: product.shortDescription, price: formatPrice(product.price) } : {};
+    const variables = product ? { name: product.name, description: product.shortDescription, price: productPrice(product) } : {};
     const result = {};
     for (const field of fields) {
       const value = item[field] ?? (["caption", "mediaSuggestion", "callToAction"].includes(field) && product ? template?.[field] : "") ?? "";

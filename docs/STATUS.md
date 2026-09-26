@@ -15,6 +15,13 @@
 - [x] M8 Infra AWS
 - [x] M9 CI/CD + fechamento
 
+## Atualização do catálogo — 2026-09-26 — COMPLETE local
+- Pacote integrado em data/, public/products/ e docs/. Fonte principal: data/catalogo.json; 80 produtos: 15 bodies, 8 shorts bebê, 10 shorts infantil, 7 vestidos, 30 conjuntos femininos e 10 masculinos.
+- 80 fotos preservadas byte a byte (SHA-256); caminhos conferem com assets-map.csv. Nenhuma imagem gerada/editada ou referência antiga de imagem encontrada no código/planner.
+- 30 preços informados e 50 sob consulta. priceLabel respeitado; carrinho misto sem total numérico enganoso. Tamanhos somente de referência, CTA WhatsApp correto e entrega/retirada a combinar.
+- PASS: lint, TypeScript, 19 testes, build/export (96 páginas), 80 imagens e rotas HTTP sem 404, Edge/Chromium 1440px e 390px, filtros/contagens, tamanhos, carrinho/persistência, WhatsApp sem envio e URLs legadas.
+- Rascunhos antigos do Instagram tornados genéricos, sem associação inventada às novas estampas; exports atualizados. Preview local trata caminhos RSC gerados no Windows; logo existente usada como ícone.
+- Alteração local, sem AWS/DNS/deploy. A versão publicada em 2026-09-25 permanece em produção; disponibilizar o novo catálogo exige uma publicação posterior autorizada.
 ## Encerramento V1
 V1 COMPLETE por solicitação do usuário. Domínio final: https://dililu.sofbrasil.com.br. Publicação: 2026-09-25. DNS, HTTPS, desktop/mobile, Home, catálogo, produto, carrinho e WhatsApp: PASS, conforme evidências já registradas. Encerramento documental, sem repetir testes/build ou alterar AWS/código. Fotos reais e melhorias adicionais de segurança/performance ficam como evolução posterior, sem bloquear a V1.
 
@@ -64,7 +71,7 @@ V1 COMPLETE por solicitação do usuário. Domínio final: https://dililu.sofbra
 ## Continuidade após a V1 (sem bloqueios de encerramento)
 - Bloqueio de ferramentas resolvido: Node.js/npm e Git locais, sem instalação global.
 - Logo oficial em `public/brand/logo-dililu.png`, preservada sem edição e usada no header/footer. Cards e detalhes usam placeholder com a marca e aviso explícito; nenhuma foto de produto gerada.
-- Fotos reais pendentes: adicionar em `public/products/` e preencher `images` em `src/data/products.ts`, capa primeiro. Placeholder é substituído automaticamente; não inserir a logo como foto de produto.
+- Fotos fornecidas integradas ao novo catálogo local de 80 produtos. Substituições futuras devem atualizar data/catalogo.json e preservar a correspondência das imagens.
 - GitHub configurado: `walissonrs123-jpg/dililu-store`, main. Role OIDC criada: `arn:aws:iam::320169806724:role/dililu-github-deploy`. Upload/invalidação, DNS autorizado e validação pelo domínio final concluídos.
 
 

@@ -18,3 +18,10 @@
 - D017: M1 adota tokens provisórios lilás/menta e fontes do sistema, com nome Dililu em texto até receber a logo oficial. Nenhuma imagem de marca ou produto inventada; ativos reais continuam pendentes para apresentação final.
 - D018: M2 usa preços/atributos da especificação e tamanhos do sample apenas como referência, sem afirmar estoque. Vestido sem grade informada fica com tamanhos a consultar. Sem selos de novidade; fotos faltantes recebem aviso textual, sem imagens substitutas.
 - D019: Carrinho persiste apenas IDs/variações/quantidades; preços são relidos do catálogo e somados em centavos. Armazenamento indisponível usa memória da aba com aviso. Planner local exporta Markdown/CSV sem API Meta; CI não publica nem acessa AWS.
+
+## 2026-09-26 — Catálogo fornecido (80 peças)
+- data/catalogo.json é a fonte principal; adaptador preserva todos os campos e acrescenta apenas compatibilidade com a interface existente. Fotos copiadas sem alteração, comprovada por SHA-256.
+- Preços nulos ficam sob consulta também no carrinho/WhatsApp, sem total numérico incompleto. Tamanhos são referência, nunca estoque.
+- URLs genéricas antigas encaminham por link às categorias; carrinhos com IDs removidos são descartados pela validação existente, sem inventar correspondência de estampas. Rascunhos Instagram antigos ficam genéricos até selecionar uma peça atual.
+- Atualização local; publicação AWS não faz parte deste pedido.
+- Validação local usa o mesmo export e navegador desktop/mobile. Preview resolve a diferença de caminhos RSC no Windows, sem mudar a aplicação ou o deploy Linux ([referência Next.js](https://github.com/vercel/next.js/issues/85374)). Logo existente referenciada como ícone para evitar solicitação de favicon ausente.

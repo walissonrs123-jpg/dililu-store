@@ -1,13 +1,19 @@
+import catalog from "../../data/catalogo.json" with { type: "json" };
 import type { Product } from "../lib/catalog.ts";
 
-// Prices/attributes from PROJECT_SPEC; sizes from the supplied sample are
-// reference sizes only, never inventory. Real product media has not been supplied.
-// To replace placeholders, save official photos in public/products/ and fill
-// images with /products/filename.ext paths, cover first, then gallery photos.
-export const products: Product[] = [
-  { id: "body-mbaby", slug: "body-mbaby", name: "Body M Baby", shortDescription: "Body infantil com tecido toque de pêssego.", brand: "M Baby", material: "Toque de pêssego", category: "bodies", audience: "bebe", price: 34.9, sizes: ["P", "M", "G", "GG"], images: [], active: true, stockMode: "consult" },
-  { id: "short-mbaby", slug: "short-mbaby", name: "Short M Baby", shortDescription: "Short infantil. Consulte estampas e tamanhos no atendimento.", brand: "M Baby", category: "shorts", audience: "bebe", price: 19.9, sizes: ["P", "M", "G", "GG"], images: [], active: true, stockMode: "consult" },
-  { id: "vestido-infantil", slug: "vestido-infantil", name: "Vestido infantil", shortDescription: "Consulte detalhes, tamanhos e estampas pelo WhatsApp.", category: "vestidos", audience: "menina", price: 34.9, sizes: [], images: [], active: true, stockMode: "consult" },
-  { id: "conjunto-jennynha-masculino", slug: "conjunto-jennynha-masculino", name: "Conjunto Jennynha Masculino", shortDescription: "Conjunto infantil masculino 100% algodão.", brand: "Jennynha", material: "100% algodão", category: "conjuntos-masculinos", audience: "menino", price: 54.9, sizes: ["2", "4", "6", "8", "10"], images: [], active: true, stockMode: "consult" },
-  { id: "conjunto-jennynha-feminino", slug: "conjunto-jennynha-feminino", name: "Conjunto Jennynha Feminino", shortDescription: "Conjunto 100% algodão com cinto e bolsinha inclusos.", brand: "Jennynha", material: "100% algodão", category: "conjuntos-femininos", audience: "menina", price: 64.9, sizes: ["2", "4", "6", "8", "10"], images: [], active: true, stockMode: "consult" },
-];
+// Keep every supplied field; derived fields adapt the existing UI only.
+const categoryIds: Record<string, string> = { body: "bodies", "short-bebe": "shorts-bebe", "short-infantil": "shorts-infantil", vestido: "vestidos" };
+export const products: Product[] = catalog.products.map((entry) => ({
+  ...entry,
+  categoryId: entry.category === "conjunto" ? `conjuntos-${entry.gender === "feminino" ? "femininos" : "masculinos"}` : (categoryIds[entry.category] ?? entry.category),
+  shortDescription: "Consulte tamanhos disponíveis",
+  sizes: entry.sizesReference,
+  images: [entry.image],
+  stockMode: "consult" as const,
+})).sort((a, b) => a.order - b.order);
+
+// Generic old URLs lead to a category, not an invented equivalent product.
+export const legacyProductCategories: Record<string, string> = {
+  "body-mbaby": "bodies", "short-mbaby": "shorts-bebe", "vestido-infantil": "vestidos",
+  "conjunto-jennynha-feminino": "conjuntos-femininos", "conjunto-jennynha-masculino": "conjuntos-masculinos",
+};
