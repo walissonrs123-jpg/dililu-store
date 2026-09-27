@@ -5,7 +5,7 @@ import { products, legacyProductCategories } from "@/data/products";
 import { categories } from "@/lib/catalog";
 import { Container, SectionHeading } from "@/components/ui";
 import { ProductDetails } from "@/components/product-details";
-import { ProductCard } from "@/components/product-card";
+import { LiveProductGrid } from "@/components/live-product-grid";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -30,6 +30,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return <main id="conteudo" tabIndex={-1} className="py-10 sm:py-16"><Container>
     <nav aria-label="Caminho da página" className="text-sm text-muted"><Link href="/catalogo" className="underline underline-offset-4">Catálogo</Link><span aria-hidden="true"> / </span><span>{product.name}</span></nav>
     <ProductDetails product={product} />
-    {related.length > 0 && <section className="mt-16 space-y-6"><SectionHeading title="Conheça também" /><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{related.map((item) => <ProductCard key={item.id} product={item} />)}</div></section>}
+    {related.length > 0 && <section className="mt-16 space-y-6"><SectionHeading title="Conheça também" /><LiveProductGrid categoryId={product.categoryId} excludeId={product.id} /></section>}
   </Container></main>;
 }

@@ -2,7 +2,7 @@ import { ActionLink, Badge, Container, Panel, SectionHeading } from "@/component
 import { store } from "@/lib/store";
 import { categories, audiences } from "@/lib/catalog";
 import { products } from "@/data/products";
-import { ProductCard } from "@/components/product-card";
+import { LiveProductGrid } from "@/components/live-product-grid";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -27,10 +27,10 @@ export default function Home() {
         </section>
         <section className="mt-16 space-y-6 sm:mt-24">
           <SectionHeading eyebrow="Um pouco da Dililu" title="Peças para conhecer" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{products.filter((product) => product.active).slice(0, 3).map((product) => <ProductCard key={product.id} product={product} />)}</div>
+          <LiveProductGrid />
           <ActionLink href="/catalogo" variant="secondary">Ver todas as peças</ActionLink>
         </section>
-        {products.some((product) => product.active && product.newArrival) && <section className="mt-16 space-y-6"><SectionHeading title="Novidades" /><div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{products.filter((product) => product.active && product.newArrival).map((product) => <ProductCard key={product.id} product={product} />)}</div></section>}
+        {products.some((product) => product.active && product.newArrival) && <section className="mt-16 space-y-6"><SectionHeading title="Novidades" /><LiveProductGrid newArrival limit={80} /></section>}
         <section id="como-comprar" className="mt-16 space-y-6 sm:mt-24">
           <SectionHeading eyebrow="Como comprar" title="Uma conversa, uma escolha especial" />
           <div className="grid gap-4 md:grid-cols-3">{[{ title: "Conheça as peças", text: "Explore o catálogo e encontre o que combina com seu pequeno." }, { title: "Converse com a gente", text: "Confirme fotos, tamanhos, estampas e disponibilidade pelo WhatsApp." }, { title: "Combine os detalhes", text: "Entrega ou retirada a combinar." }].map((step, index) => <Panel key={step.title}><p className="mb-5 text-sm font-bold text-brand">0{index + 1}</p><h3 className="mb-3 font-display text-2xl">{step.title}</h3><p className="text-sm text-muted">{step.text}</p></Panel>)}</div>

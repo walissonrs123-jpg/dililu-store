@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { products } from "@/data/products";
+import { useCatalog, CatalogState } from "@/components/catalog-provider";
 import { audiences, categories, filterProducts, initialFilters, referenceSizes, type CatalogFilters } from "@/lib/catalog";
 import { Button, Input, Panel, Select } from "@/components/ui";
 import { ProductCard } from "@/components/product-card";
 
 export function Catalog() {
+  const { products, ready } = useCatalog();
   const params = useSearchParams();
   const category = params.get("categoria") ?? "";
   const [filters, setFilters] = useState<CatalogFilters>(() => ({ ...initialFilters, category: categories.some((item) => item.id === category) ? category : "" }));
@@ -15,6 +16,7 @@ export function Catalog() {
   function update<K extends keyof CatalogFilters>(key: K, value: CatalogFilters[K]) {
     setFilters((previous) => ({ ...previous, [key]: value }));
   }
+  if (!ready) return <CatalogState />;
   return <div className="mt-8 space-y-8">
     <Panel>
       <form role="search" aria-label="Filtrar catálogo" onSubmit={(event) => event.preventDefault()} className="grid items-end gap-5 sm:grid-cols-2 lg:grid-cols-3">

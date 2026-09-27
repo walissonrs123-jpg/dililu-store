@@ -14,7 +14,8 @@ Construir a V1.1 da Dililu conforme `docs/PROJECT_SPEC.md`, `docs/ARCHITECTURE.m
 - Catálogo + carrinho + WhatsApp.
 - Planejamento local de Feed/Story/Reel em `content/`.
 - Agendamento manual pelo Meta Business Suite gratuito.
-- Não criar checkout, login, painel admin web, Meta Graph API ou postagem automática.
+- Não criar checkout, login público, Meta Graph API ou postagem automática.
+- Painel administrativo Cognito + catálogo/estoque autorizado para preparação local em 2026-09-27. Produção, migração e criação de recursos exigem autorização posterior.
 - Não executar `terraform apply`.
 - Não inventar preço, estoque, frete, promoção, avaliação ou política comercial.
 - Não declarar envio nacional.

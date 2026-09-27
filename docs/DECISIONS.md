@@ -24,4 +24,10 @@
 - Preços nulos ficam sob consulta também no carrinho/WhatsApp, sem total numérico incompleto. Tamanhos são referência, nunca estoque.
 - URLs genéricas antigas encaminham por link às categorias; carrinhos com IDs removidos são descartados pela validação existente, sem inventar correspondência de estampas. Rascunhos Instagram antigos ficam genéricos até selecionar uma peça atual.
 - Atualização local; publicação AWS não faz parte deste pedido.
+
+## 2026-09-27 — Administração local autorizada
+- Novo pedido amplia o escopo para admin privado; preparação local apenas. Terraform separado em infra/admin, sem modificar a infraestrutura do site. Cognito PKCE, HTTP API/JWT/grupo, Lambda e DynamoDB sob demanda; nenhuma credencial no frontend.
+- Sem estoque informado, seed usa null/a consultar. Quantidades conhecidas limitam o carrinho; WhatsApp nunca baixa estoque. Seed condicional não sobrescreve registros; edição usa versão para evitar perda por concorrência.
+- Dez shorts infantis reconhecidos para proposta de preço. Quarenta conjuntos sem marca nos metadados permanecem sob consulta até confirmar Jennynha. Catálogo/imagens originais preservados.
+- Carrinho mantém a chave existente e salva nome/preço como snapshot, mas recalcula usando catálogo atual. API configurada indisponível bloqueia compra em vez de reusar preço/estoque estático.
 - Validação local usa o mesmo export e navegador desktop/mobile. Preview resolve a diferença de caminhos RSC no Windows, sem mudar a aplicação ou o deploy Linux ([referência Next.js](https://github.com/vercel/next.js/issues/85374)). Logo existente referenciada como ícone para evitar solicitação de favicon ausente.

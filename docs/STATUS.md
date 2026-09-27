@@ -15,6 +15,14 @@
 - [x] M8 Infra AWS
 - [x] M9 CI/CD + fechamento
 
+## Admin e estoque — 2026-09-27 — COMPLETE local / produção NÃO autorizada
+- `/admin` responsivo com Cognito PKCE, pesquisa/edição, preço sob consulta, status e estoque por tamanho. APIs de escrita restritas a JWT/grupo; controle de versão para concorrência. Catálogo dinâmico opcional, carrinho limitado ao estoque e sem baixa pelo WhatsApp.
+- Terraform isolado em `infra/admin/`: Cognito, HTTP API, Lambda, DynamoDB sob demanda e IAM/logs mínimos. `fmt`/`validate` PASS; nenhum plan/apply ou consulta AWS. Zero recursos criados/alterados.
+- Seed dry-run: 80 encontrados, 80 preparados, zero ignorados; idempotente sem sobrescrita. Catálogo, IDs, preços e fotos originais preservados. Estoque inicial desconhecido = a consultar; informar quantidades reais posteriormente.
+- Preços somente propostos: 10 shorts infantis a R$ 19,90; zero conjuntos alterados. Confirmar marca Jennynha dos 30 femininos/10 masculinos antes de propor atualização destes.
+- PASS: lint, TypeScript, 27 testes, build/export de 97 páginas, navegador 1440px/390px com API/Cognito simulados (login, edição, ocultos, esgotados, carrinho, WhatsApp e falha de rede). Build final local sem endpoints simulados. Integração real Cognito/DynamoDB ainda não executada.
+- Próximo: autorização de implantação, e-mail administrador, revisão do plano/custos e estoque real. Fluxo em `docs/ADMIN.md`. Sem push/deploy/seed em produção; site publicado permanece no commit f33cc84.
+
 ## Publicação do catálogo — 2026-09-27 — COMPLETE
 - Correção/publicação: `f33cc847b9ff1060fd185d20595f9a7ce4145c04`, contendo `8032b67`. Gerador CSV padronizado em LF e regra `*.csv text eol=lf`; BOM e conteúdo lógico preservados. Nenhum produto, preço, foto ou conteúdo do catálogo alterado.
 - PASS: lint, TypeScript, 19 testes, build/export (96 páginas), CSV regenerado idêntico e CI [36311855938](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36311855938).

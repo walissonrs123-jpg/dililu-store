@@ -77,6 +77,7 @@ try {
     }
     await page.goto(base + "/produtos/" + unknown.slug, { waitUntil: "networkidle" });
     await page.getByText("Consulte o valor", { exact: true }).first().waitFor();
+    await page.getByLabel("Tamanho desejado").selectOption(unknown.sizes[0]);
     await page.getByRole("button", { name: "Adicionar ao carrinho", exact: true }).click();
     await page.getByRole("link", { name: "Ver carrinho", exact: true }).click();
     await page.waitForFunction(() => document.querySelector("strong")?.textContent === "Consulte o valor");

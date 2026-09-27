@@ -13,6 +13,9 @@ export type Product = (typeof catalog.products)[number] & {
   featured?: boolean;
   newArrival?: boolean;
   stockMode: "consult" | "available" | "unavailable";
+  reference?: string;
+  inventory?: Record<string, number | null>;
+  status?: "ACTIVE" | "SOLD_OUT" | "HIDDEN";
 };
 
 export type CatalogFilters = {
