@@ -15,6 +15,13 @@
 - [x] M8 Infra AWS
 - [x] M9 CI/CD + fechamento
 
+## Publicação do catálogo — 2026-09-27 — COMPLETE
+- Correção/publicação: `f33cc847b9ff1060fd185d20595f9a7ce4145c04`, contendo `8032b67`. Gerador CSV padronizado em LF e regra `*.csv text eol=lf`; BOM e conteúdo lógico preservados. Nenhum produto, preço, foto ou conteúdo do catálogo alterado.
+- PASS: lint, TypeScript, 19 testes, build/export (96 páginas), CSV regenerado idêntico e CI [36311855938](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36311855938).
+- Deploy OIDC [36312041946](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36312041946): 760 objetos enviados de out/ ao bucket dililu-site-320169806724-prod, sem exclusões. Invalidação `ICRB3M6TPR6PMCO8VT44LL56SN` concluída em 2026-09-27 às 07:27:49 (America/Sao_Paulo).
+- https://dililu.sofbrasil.com.br: PASS em [36312657161](https://github.com/walissonrs123-jpg/dililu-store/actions/runs/36312657161), desktop 1440px/mobile 390px; 80 produtos/fotos, seis categorias, tamanho, carrinho/persistência/misto sob consulta, WhatsApp sem envio, logo e console sem erros. Verificação complementar: oito rotas, incluindo cinco legadas, e 13 assets JS/CSS HTTP 200 com MIME correto.
+- DNS, IAM, certificados e configuração de infraestrutura preservados. Rollback identificado pelo workflow anterior 36167487484 (commit 45d80cb); não necessário. Warnings: ESLint 9.39.5 sem suporte e ação AWS direcionada a Node 20 executada em Node 24; npm audit reportou zero vulnerabilidades.
+
 ## Atualização do catálogo — 2026-09-26 — COMPLETE local
 - Pacote integrado em data/, public/products/ e docs/. Fonte principal: data/catalogo.json; 80 produtos: 15 bodies, 8 shorts bebê, 10 shorts infantil, 7 vestidos, 30 conjuntos femininos e 10 masculinos.
 - 80 fotos preservadas byte a byte (SHA-256); caminhos conferem com assets-map.csv. Nenhuma imagem gerada/editada ou referência antiga de imagem encontrada no código/planner.
