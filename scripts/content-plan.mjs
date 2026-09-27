@@ -40,7 +40,7 @@ export function csvCell(value) {
   return `"${safe.replaceAll('"', '""')}"`;
 }
 export function toCsv(items) {
-  return "\uFEFF" + [fields.join(","), ...items.map((item) => fields.map((field) => csvCell(item[field])).join(","))].join("\r\n") + "\r\n";
+  return "\uFEFF" + [fields.join(","), ...items.map((item) => fields.map((field) => csvCell(item[field])).join(","))].join("\n") + "\n";
 }
 function markdown(value) { return String(value ?? "").replace(/[\\`*_{}[\]<>#|]/g, "\\$&"); }
 export function toMarkdown(items) {
