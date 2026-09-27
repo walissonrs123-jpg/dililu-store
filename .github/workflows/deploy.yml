@@ -17,6 +17,9 @@ jobs:
     timeout-minutes: 30
     env:
       NEXT_TELEMETRY_DISABLED: '1'
+      NEXT_PUBLIC_CATALOG_API_URL: ${{ vars.NEXT_PUBLIC_CATALOG_API_URL }}
+      NEXT_PUBLIC_COGNITO_DOMAIN: ${{ vars.NEXT_PUBLIC_COGNITO_DOMAIN }}
+      NEXT_PUBLIC_COGNITO_CLIENT_ID: ${{ vars.NEXT_PUBLIC_COGNITO_CLIENT_ID }}
     permissions:
       contents: read
       id-token: write
@@ -65,7 +68,9 @@ jobs:
           echo "Invalidation ID: $invalidation_id"
           aws cloudfront wait invalidation-completed --distribution-id E1EZ9JK9Q7UT7V --id "$invalidation_id"
           echo 'Invalidation completed.'
-      - name: Validate CloudFront desktop and mobile
+      - name: Validate published domain desktop and mobile
+        env:
+          SITE_URL: https://dililu.sofbrasil.com.br
         run: PLAYWRIGHT_ROOT="$RUNNER_TEMP/dililu-browser" node scripts/smoke-cloudfront.mjs
     # No environment: the approved trust uses the main branch subject.
     # Only PutObject, CreateInvalidation and GetInvalidation; no deletions or DNS.

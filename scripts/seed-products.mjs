@@ -54,7 +54,7 @@ async function main() {
     const result = await importMissing(items, async item => {
       const path = join(directory, "item.json");
       await writeFile(path, JSON.stringify({ TableName: "DililuProducts", Item: attribute(item).M, ConditionExpression: "attribute_not_exists(productId)" }));
-      const response = spawnSync(aws, ["dynamodb", "put-item", "--region", "us-east-1", "--cli-input-json", `file://${path}`], { encoding: "utf8" });
+      const response = spawnSync(aws, ["dynamodb", "put-item", "--region", "us-east-1", "--cli-input-json", `file://${path}`], { encoding: "utf8", env: { ...process.env, AWS_CLI_FILE_ENCODING: "UTF-8" } });
       if (response.status !== 0) {
         const error = new Error(`Importação interrompida: ${item.productId}`);
         if (response.stderr?.includes("ConditionalCheckFailedException")) error.name = "ConditionalCheckFailedException";

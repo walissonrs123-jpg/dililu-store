@@ -1,5 +1,9 @@
 # Admin — preparação local
 
+Atualização 2026-09-27: infraestrutura aplicada mediante autorização direta (18 criações, zero alterações/exclusões). Seed de 80 produtos e API validados; convite administrativo enviado, primeiro acesso pendente. Outputs públicos e evidências em STATUS.md; nenhuma senha/tokens versionados. Publicação frontend ainda pendente neste registro.
+
+Seed no Windows fixa [AWS_CLI_FILE_ENCODING=UTF-8](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html) para preservar acentos. Onze nomes da carga inicial foram restaurados com condições de versão/valor, sem mudança de preço ou estoque; a comparação integral pela API passou.
+
 Nenhuma alteração AWS, seed ou publicação autorizada nesta etapa. `/admin` contém somente uma tela de login pública; dados e edição exigem token Cognito e grupo `dililu-admin`. Login público/cadastro desabilitados. Authorization Code + PKCE S256; token de acesso apenas em memória, validade 15 minutos. Logout encerra a sessão local/Hosted UI; JWT já emitido pode permanecer válido até expirar.
 
 Infra proposta em `infra/admin/`, estado separado: Cognito Lite (pool, cliente sem secret, domínio de login, grupo), HTTP API com JWT, Lambda Node 24, DynamoDB `DililuProducts` sob demanda, logs por sete dias e role restrita à tabela/logs. Sem GSI, servidores, alterações no site/S3/CloudFront/DNS ou na role de deploy. SDK v3 fornecido pelo runtime Lambda; validar integração real após autorização. Recursos cobram conforme uso; não estimamos gratuidade garantida.
