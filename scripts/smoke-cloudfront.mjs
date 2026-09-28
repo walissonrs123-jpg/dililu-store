@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { pathToFileURL } from "node:url";
+import { categories } from "../src/lib/catalog.ts";
 import { products } from "../src/data/products.ts";
 
 const { chromium } = await import(pathToFileURL(`${process.env.PLAYWRIGHT_ROOT}/node_modules/playwright/index.mjs`).href);
@@ -35,15 +36,20 @@ try {
     await page.waitForFunction(() => [...document.querySelectorAll('header img')].some(img => img.complete && img.naturalWidth > 0));
     await checkWidth();
     await page.locator('header a[href="/catalogo"]').click();
-    await page.getByLabel("Buscar uma peça").waitFor();
+    const mobile = viewport.width < 500;
+    if (mobile) await page.getByRole("button", { name: "Filtros", exact: true }).click();
+    const filters = page.locator(mobile ? "dialog" : "aside");
+    await filters.getByLabel("Buscar uma peça").waitFor();
     assert.equal(await page.locator("article").count(), 80);
     for (const [category, count] of Object.entries({ bodies: 15, "shorts-bebe": 8, "shorts-infantil": 10, vestidos: 7, "conjuntos-femininos": 30, "conjuntos-masculinos": 10 })) {
-      await page.getByLabel("Categoria", { exact: true }).selectOption(category);
+      const checkbox = filters.getByLabel(categories.find(item => item.id === category).name, { exact: true });
+      await checkbox.check();
       await page.waitForFunction(expected => document.querySelectorAll("article").length === expected, count);
+      await checkbox.uncheck();
     }
-    await page.getByLabel("Categoria", { exact: true }).selectOption("");
-    await page.getByLabel("Buscar uma peça").fill(sample.name);
+    await filters.getByLabel("Buscar uma peça").fill(sample.name);
     await page.waitForFunction(() => document.querySelectorAll("article").length === 1);
+    if (mobile) await page.getByRole("button", { name: "Fechar filtros", exact: true }).click();
     assert.equal(await page.getByText("Foto do produto em breve", { exact: true }).count(), 0);
     assert.equal(await page.locator("article img").evaluate(img => getComputedStyle(img).objectFit), "contain");
     for (const href of await page.locator('a[href^="https://wa.me/"]').evaluateAll(links => links.map(a => a.href))) assert.equal(new URL(href).pathname, "/5534996419677");

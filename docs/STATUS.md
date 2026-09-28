@@ -3,6 +3,11 @@
 - Marco atual: M9
 - Estado: COMPLETE
 
+## Catálogo UX — 2026-09-28 — COMPLETE local
+- Home sem atalhos duplicados; catálogo com lateral de 280px e modal mobile, busca normalizada, filtros múltiplos de categoria/idade/tamanho/sexo e estado na URL. Idade somente pelos tamanhos; sexo somente por metadados explícitos.
+- PASS: lint, TypeScript, 15 testes de catálogo/carrinho, build/export 97 páginas e smoke local 1440px/390px (busca short: 18; sem filtros: 80; limpar, links antigos, carrinho e WhatsApp). API interceptada com dados locais no smoke; sem acesso à produção.
+- data/, public/ e src/data/products.ts sem alterações: produtos, preços, imagens e estoque preservados. Nenhuma alteração AWS ou publicação. Próximo: validação do usuário antes de autorizar deploy.
+
 ## Marcos
 - [x] M0 Bootstrap
 - [x] M1 Design system

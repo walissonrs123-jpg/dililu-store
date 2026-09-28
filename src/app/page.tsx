@@ -1,9 +1,7 @@
 import { ActionLink, Badge, Container, Panel, SectionHeading } from "@/components/ui";
 import { store } from "@/lib/store";
-import { categories, audiences } from "@/lib/catalog";
 import { products } from "@/data/products";
 import { LiveProductGrid } from "@/components/live-product-grid";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
@@ -21,10 +19,6 @@ export default function Home() {
         </div>
         <aside className="rounded-card bg-lilac p-8 sm:p-12"><p className="mb-5 text-xs font-bold uppercase tracking-widest text-brand">Do bebê à infância</p><p className="font-display text-3xl">Cada fase tem seu encanto.</p><dl className="mt-8 space-y-4 text-sm"><div className="flex flex-wrap justify-between gap-2 border-b border-line pb-4"><dt className="font-semibold">Moda bebê</dt><dd>P · M · G · GG</dd></div><div className="flex flex-wrap justify-between gap-2"><dt className="font-semibold">Moda infantil</dt><dd>2 · 4 · 6 · 8 · 10 anos</dd></div></dl><p className="mt-6 text-xs text-muted">Consulte as opções e a disponibilidade de cada peça.</p></aside>
         </div>
-        <section className="mt-16 space-y-6 sm:mt-24" aria-labelledby="categorias">
-          <h2 id="categorias" className="font-display text-3xl sm:text-4xl">O que vamos encontrar hoje?</h2>
-          <div className="space-y-6">{audiences.map((audience) => <div key={audience.id} className="space-y-3"><h3 className="font-display text-2xl">{audience.name}</h3><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">{categories.filter((category) => category.audience === audience.id).map((category) => <Link key={category.id} href={`/catalogo?categoria=${category.id}`} className="rounded-card border border-line bg-white p-5 text-sm font-semibold transition-colors hover:bg-lilac">{category.name}<span aria-hidden="true" className="ml-2">↗</span></Link>)}</div></div>)}</div>
-        </section>
         <section className="mt-16 space-y-6 sm:mt-24">
           <SectionHeading eyebrow="Um pouco da Dililu" title="Peças para conhecer" />
           <LiveProductGrid />

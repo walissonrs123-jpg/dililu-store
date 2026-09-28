@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { access } from "node:fs/promises";
-import { filterProducts, initialFilters } from "../src/lib/catalog.ts";
+import { filterProducts, initialFilters, productAges, productSex, catalogFilterOptions, parseCatalogFilters, catalogFilterParams } from "../src/lib/catalog.ts";
 import { products } from "../src/data/products.ts";
 
 test("busca ignora acentos e combina palavras", () => {
@@ -10,11 +10,11 @@ test("busca ignora acentos e combina palavras", () => {
 });
 
 test("categoria, público e tamanho são combinados sem inventar disponibilidade", () => {
-  const result = filterProducts(products, { ...initialFilters, category: "bodies", audience: "bebe", size: "M" });
+  const result = filterProducts(products, { ...initialFilters, categories: ["bodies"], ages: ["bebe"], sizes: ["M"] });
   assert.equal(result.length, 15);
   assert.equal(result[0].stockMode, "consult");
-  assert.equal(filterProducts(products, { ...initialFilters, category: "bodies", size: "10" }).length, 0);
-  assert.equal(filterProducts(products, { ...initialFilters, category: "kits" }).length, 0);
+  assert.equal(filterProducts(products, { ...initialFilters, categories: ["bodies"], sizes: ["10"] }).length, 0);
+  assert.equal(filterProducts(products, { ...initialFilters, categories: ["kits"] }).length, 0);
 });
 
 test("ordenação numérica preserva a ordem original do catálogo", () => {
@@ -57,4 +57,34 @@ test("fonte JSON: exatamente 80 produtos, categorias e campos preservados", asyn
     assert.deepEqual(actual.sizes, supplied.sizesReference);
   }
   assert.equal(products.filter(p => p.price === null).length, 50);
+});
+test("short finds both categories regardless of case", () => {
+  for (const query of ["short", "Short", "SHORT"]) {
+    const result = filterProducts(products, { ...initialFilters, query });
+    assert.equal(result.length, 18);
+    assert.deepEqual(new Set(result.map(p => p.categoryId)), new Set(["shorts-bebe", "shorts-infantil"]));
+  }
+});
+test("OR within groups and AND between groups and query", () => {
+  const result = filterProducts(products, { ...initialFilters, query: "short", categories: ["shorts-bebe", "shorts-infantil"], ages: ["4", "6"], sizes: ["4", "6"], sexes: ["unissex"] });
+  assert.equal(result.length, 10);
+  assert(result.every(p => p.categoryId === "shorts-infantil"));
+});
+test("age and gender use only explicit metadata", () => {
+  assert.deepEqual(productAges({ sizes: ["P", "GG", "4", "4", "XXL"] }), ["bebe", "4"]);
+  assert.deepEqual(productAges({ sizes: [] }), []);
+  assert.equal(productSex({ gender: "", categoryId: "shorts-bebe", name: "Menina rosa" }), "");
+  assert.equal(productSex({ gender: "", categoryId: "conjuntos-femininos" }), "feminino");
+  assert.equal(productSex({ gender: "unissex", categoryId: "conjuntos-femininos" }), "unissex");
+  assert.deepEqual(catalogFilterOptions([]), { categories: [], ages: [], sizes: [], sexes: [] });
+});
+test("URL preserves category links; clearing restores all 80 products", () => {
+  const filters = parseCatalogFilters(new URLSearchParams("categoria=shorts-bebe&size=P&size=P&size=INVALID&sort=price-desc&q=short"));
+  assert.deepEqual(filters.categories, ["shorts-bebe"]);
+  assert.deepEqual(filters.sizes, ["P"]);
+  assert.deepEqual(parseCatalogFilters(catalogFilterParams(filters)), filters);
+  const cleared = parseCatalogFilters(catalogFilterParams(initialFilters, new URLSearchParams("q=short&categoria=bodies&sort=price-desc&utm_source=test")));
+  assert.deepEqual(cleared, initialFilters);
+  assert.equal(filterProducts(products, cleared).length, 80);
+  assert.equal(catalogFilterParams(initialFilters, new URLSearchParams("utm_source=test")).get("utm_source"), "test");
 });
