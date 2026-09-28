@@ -20,13 +20,16 @@
 - [x] M8 Infra AWS
 - [x] M9 CI/CD + fechamento
 
-## Implantação Admin — 2026-09-27 — backend pronto / publicação pendente
+## Implantação Admin — publicação concluída / smoke autenticado pendente
+- Confirmado em 2026-09-28: workflow 36340900921 PASS, commit f96ec5e. Upload de 768 objetos sem exclusões; invalidação I45OCUKUF46MTV428JUBDYNGB9 concluída em 2026-09-27. Smoke público 1440px/390px PASS, 80 produtos/fotos. Home e /admin HTTP 200; painel sem login bloqueia edição e abre Cognito.
+- Nenhum novo upload/invalidação, Terraform ou seed nesta retomada. Teste autenticado aguarda confirmação do primeiro login; nenhuma edição de produto foi executada.
+- Em 2026-09-28, usuário autorizou transferir login/recuperação da conta de suporte para Alice. E-mail alterado na mesma identidade Cognito, grupo dililu-admin preservado, sem criar outro usuário. Cognito aceitou RESEND do convite para Alice; status FORCE_CHANGE_PASSWORD. Novo endereço ainda não marcado como verificado; primeiro acesso/verificação pendentes. O pedido anterior de acesso temporário foi substituído pela transferência explicitamente autorizada.
 - Autorização direta recebida; plano salvo aplicado: 18 criados, zero alterados/excluídos. Terraform init/validate/plan/apply PASS; S3, CloudFront, DNS e certificados existentes preservados.
 - DynamoDB DililuProducts: 80 produtos importados. API https://m7qpv51so9.execute-api.us-east-1.amazonaws.com; Lambda dililu-catalog; role dililu-catalog-lambda. Cognito pool us-east-1_KewNvVNsJ, client 7j3t1u94v1vmnkv607v958trvc, domínio dililu-admin-320169806724.auth.us-east-1.amazoncognito.com.
 - Único administrador convidado por e-mail e associado a dililu-admin; status FORCE_CHANGE_PASSWORD. Cadastro público desabilitado. Primeiro acesso/troca da senha temporária ainda necessários; nenhum segredo registrado.
 - Seed original preservou preços/estoque. Onze nomes tiveram codificação CP1252 incorreta no AWS CLI Windows; restaurados condicionalmente à versão 1 e ao valor corrompido conhecido. Seed corrigido com AWS_CLI_FILE_ENCODING=UTF-8. API confirma todos os campos dos 80 registros idênticos à origem preparada, estoque null, escrita/leitura administrativa anônimas bloqueadas e CORS correto.
 - Três variáveis públicas configuradas em .env.local ignorado e GitHub Actions. Workflow usa outputs reais e valida pelo domínio final autorizado no CORS. PASS: lint, TypeScript, 27 testes, build/export 97 páginas; testes de migração repetidos após correção PASS.
-- Próximo: CI/publicação autorizada, smoke público e primeiro login do administrador para teste controlado de escrita/restauração. Nenhum upload desta versão ainda; produção permanece em f33cc84.
+- Próximo: resolver os pedidos de acesso e receber confirmação do primeiro login para executar somente o teste autenticado de escrita/restauração. Produção publicada em f96ec5e; sem necessidade de novo deploy.
 
 ## Admin e estoque — 2026-09-27 — COMPLETE local
 - `/admin` responsivo com Cognito PKCE, pesquisa/edição, preço sob consulta, status e estoque por tamanho. APIs de escrita restritas a JWT/grupo; controle de versão para concorrência. Catálogo dinâmico opcional, carrinho limitado ao estoque e sem baixa pelo WhatsApp.
